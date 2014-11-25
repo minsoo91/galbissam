@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'backbone-on-rails'
+gem 'bcrypt'
+gem 'bootstrap-sass'
 gem 'rails', '4.1.7'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
