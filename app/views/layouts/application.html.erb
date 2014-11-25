@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<% if current_user %>
+	<%= button_to "Sign Out", session_url, method: :delete  %>
+<% end %>
+
 <%= yield %>
 
 </body>
