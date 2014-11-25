@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 			sign_in!(@user)
 			redirect_to root_url
 		else
+			flash.now[:errors] = "Email and Password Combination is incorrect"
 			render :new
 		end
 	end
