@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
 	validates :username, :email, :session_token, :password_digest, presence: true
 	validates :password, length: { minimum: 6 }
 
+	has_many(
+		:photos,
+		class_name: "Photo",
+		foreign_key: :user_id,
+		primary_key: :id
+	)
+
 	after_initialize :ensure_session_token
 
 	def self.find_by_credentials(email, password)
