@@ -14,17 +14,13 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	upload: function (event) {
 	  event.preventDefault();
 	  $form = $(event.currentTarget)
+	  var url = $('input[type="filepicker"]').val()
 	  var review = $form.find('input[type=text]').val()
-	  filepicker.pick(function(blob) {
-	    var newPhoto = new Galbissam.Models.Photo({
-	      filepicker_url: blob.url,
-	    });
-	    newPhoto.set("review", review);
-	    newPhoto.save({}, {
+	    var newPhoto = new Galbissam.Models.Photo();
+	    newPhoto.save({ "review": review, "filepicker_url": url }, {
 	      success: function () {
 	        Backbone.history.navigate("", { trigger: true })
 	      }
 	    })
-	  });
 	}
 });
