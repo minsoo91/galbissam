@@ -1,14 +1,14 @@
-<div id="upload-preview"></div>
+
 <form id="new-photo-form">
-	<label for="photo_review">Review</label>
-	<input type="text" 
-		   id="photo_review"
-		   class="form-control"
-		   name="photo[review]"
-		   style="width: 400px">
+	<div id='upload-preview'></div>
+
 	<input type="filepicker"
 		   name="photo[filepicker_url"
-		   class="btn btn-primary">
+		   class="btn btn-primary"
+		   data-fp-button-text="Choose an Image"
+		   data-fp-mimetype="image/*"
+		   data-toggle="collapse"
+		   href="#details">
 	<input type="submit" value="Upload" class="btn btn-success">
 </form>
 
