@@ -1,4 +1,5 @@
 window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
+	className: "explore",
 	initialize: function () {
 		this.listenTo(this.collection, "sync", this.render)
 	},
