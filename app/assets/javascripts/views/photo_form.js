@@ -2,7 +2,8 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	// Two Choose Image buttons rendered 
 	// Upload method doesn't work
 	events: {
-		"submit form": "upload"
+		"submit form": "upload",
+		"change input[type='filepicker']": "preview"
 	},
 	template: JST['photos/form'],
 	render: function () {
@@ -22,5 +23,10 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	        Backbone.history.navigate("", { trigger: true })
 	      }
 	    })
+	},
+
+	preview: function () {
+		var url = $('input[type="filepicker"]').val()
+		$('#upload-preview').html("<img src=" + url + ">");
 	}
 });
