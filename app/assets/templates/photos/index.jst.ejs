@@ -1,8 +1,8 @@
 <h3>All Photos</h3>
 <% photos.each(function (photo) { %>
-	<div class="image-preview-wrapper">
-		<a href="#/">
-			<img src="<%= photo.get("filepicker_url") %>">
-		</a>
-	</div>
+  <div class="col-sm-6 col-md-4" id="image-wrapper">
+    <a href="#" class="thumbnail">
+     <img src="<%= photo.get("filepicker_url") %>">
+    </a>
+  </div>
 <% }) %>
