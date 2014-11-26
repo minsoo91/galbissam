@@ -16,6 +16,7 @@ gem 'newrelic_rpm'
 gem 'ejs'
 gem 'filepicker-rails'
 gem 'figaro'
+gem 'geocoder'
 
 group :development do
   gem 'better_errors'

@@ -7,6 +7,8 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 		"":"index",
 		"photos/new": "newPhoto",
 		"photos/:id": "showPhoto",
+		"restaurants/": "restaurantsIndex",
+		"restaurants/:id": "restaurantsShow"
 	},
 
 	index: function () {

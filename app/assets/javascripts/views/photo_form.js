@@ -19,9 +19,10 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	  if (url.length === 0) {
 	  	$('#upload-preview').html("<div class='alert-danger'>Please pick a file first</div>")
 	  }
-	  var review = $form.find('input[type=text]').val()
+	  var place = $form.find('#photo_place').val()
+	  var review = $form.find('#photo_review').val()
 	    var newPhoto = new Galbissam.Models.Photo();
-	    newPhoto.save({ "review": review, "filepicker_url": url }, {
+	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place }, {
 	      success: function () {
 	        Backbone.history.navigate("", { trigger: true })
 	      }
