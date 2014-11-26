@@ -28,6 +28,7 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 
 	showPhoto: function (id) {
 		var photo = Galbissam.Collections.photos.getOrFetch(id);
+
 		var showView = new Galbissam.Views.PhotoShow({
 			model: photo
 		});
