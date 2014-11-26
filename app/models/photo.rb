@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-	validates :filepicker_url, :user_id, presence: true
+	validates :filepicker_url, :user_id, :restaurant_id, :place, presence: true
 	belongs_to(
 		:user,
 		class_name: "User",
