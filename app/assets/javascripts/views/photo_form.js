@@ -22,7 +22,7 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	    newPhoto.set("review", review);
 	    newPhoto.save({}, {
 	      success: function () {
-	        alert('Photo saved!');
+	        Backbone.history.navigate("", { trigger: true })
 	      }
 	    })
 	  });
