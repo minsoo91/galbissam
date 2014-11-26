@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'static_page#root'
   resources :users
   resource :session, only: [:create, :new, :destroy]
   namespace :api, defaults: { format: :json } do
