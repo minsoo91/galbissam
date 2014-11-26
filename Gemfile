@@ -14,4 +14,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'newrelic_rpm'
+gem 'ejs'
+gem 'filepicker-rails'
+gem 'figaro'
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-rails'
+  gem 'quiet_assets'
+end

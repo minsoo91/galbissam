@@ -2,6 +2,10 @@
 <html>
 <head>
   <title>Galbissam</title>
+  <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+  <script>
+  	filepicker.setKey("ArHbWiYHDSLypuJ2P7Nr7z")
+  </script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -11,7 +15,19 @@
 	<%= flash.now[:errors] %>
  <% end %>
 <% if current_user %>
-	<%= button_to "Sign Out", session_url, method: :delete  %>
+  <ul class="nav nav-tabs">
+    <li role ="presentation">
+      <%= link_to "Explore", "/#", method: :get %>
+    </li>
+    <li role ="presentation">
+      <%= link_to "Share your story", "/#/photos/new", method: :get %>
+    </li>
+    <li role ="presentation">
+      <%= link_to "Sign Out", session_url, method: :delete  %>
+    </li>
+  </ul>
+	
+  
 <% end %>
 
 <%= yield %>

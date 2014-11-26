@@ -1,0 +1,6 @@
+<h3>All Photos</h3>
+<% photos.each(function (photo) { %>
+	<div class="image-wrapper">
+		<img src="<%= photo.get("filepicker_url") %>">
+	</div>
+<% }) %>

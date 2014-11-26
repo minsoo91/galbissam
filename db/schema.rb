@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125235117) do
+ActiveRecord::Schema.define(version: 20141126080131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "photos", force: true do |t|
     t.integer  "user_id",        null: false
-    t.string   "review",         null: false
+    t.string   "review"
     t.string   "filepicker_url", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
