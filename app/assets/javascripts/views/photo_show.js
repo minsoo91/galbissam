@@ -1,4 +1,5 @@
 window.Galbissam.Views.PhotoShow = Backbone.View.extend({
+	className: "showPhoto",
 	initialize: function () {
 		this.listenTo(this.model, "sync", this.render)
 	},
@@ -18,4 +19,4 @@ window.Galbissam.Views.PhotoShow = Backbone.View.extend({
 	likePhoto: function () {
 		alert("LIKED!")
 	}
-});	
+});

@@ -3,7 +3,7 @@ window.Galbissam.Collections.Photos = Backbone.Collection.extend({
 	url: "api/photos",
 
 	getOrFetch: function (id) {
-		var photos = Galbissam.Collections.photos;
+		var photos = this;
 		var photo = photos.get(id);
 		if (!photo) {
 			photo = new Galbissam.Models.Photo({ id: id});

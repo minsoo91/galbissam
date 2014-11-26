@@ -7,7 +7,6 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
 	render: function () {
 		var content = this.template({ photos: this.collection});
 		this.$el.html(content);
-
 		return this;
 	}
 });
