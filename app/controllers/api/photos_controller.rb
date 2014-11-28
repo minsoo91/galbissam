@@ -21,6 +21,6 @@ class Api::PhotosController < ApplicationController
 
 	private
 	def photo_params
-		params.require(:photo).permit(:user_id, :filepicker_url, :review, :place)
+		params.require(:photo).permit(:user_id, :filepicker_url, :review, :place, :restaurant_id)
 	end
 end

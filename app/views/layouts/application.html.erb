@@ -3,9 +3,7 @@
 <head>
   <title>Galbissam</title>
   <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
-  <script>
-  	filepicker.setKey("ArHbWiYHDSLypuJ2P7Nr7z")
-  </script>
+  
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"></script>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
@@ -30,6 +28,8 @@
 <% end %>
 
 <%= yield %>
-
+<script>
+    filepicker.setKey("<%= ENV['filepicker_api_key'] %>")
+  </script>
 </body>
 </html>

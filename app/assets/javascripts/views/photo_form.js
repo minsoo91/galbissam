@@ -20,9 +20,19 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	  	$('#upload-preview').html("<div class='alert-danger'>Please pick a file first</div>")
 	  }
 	  var place = $form.find('#photo_place').val()
-	  var review = $form.find('#photo_review').val()
+
+	  var restaurant = this.doesPlaceExist(place, this.savePhoto);
+	},
+
+	savePhoto: function (restaurant) {
+		var url = $('input[type="filepicker"]').val()
+		var place = $form.find('#photo_place').val()
+		var review = $form.find('#photo_review').val()
+
+		var restaurant_id = restaurant.get('id');
+
 	    var newPhoto = new Galbissam.Models.Photo();
-	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place }, {
+	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id }, {
 	      success: function () {
 	        Backbone.history.navigate("", { trigger: true })
 	      }
@@ -38,4 +48,25 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		var autocomplete = new google.maps.places.Autocomplete(input);
 	},
 
+	doesPlaceExist: function (place, callback) {
+	  var that = this;
+	  Galbissam.Collections.restaurants.fetch({
+	  	success: function () {
+		  if ((Galbissam.Collections.restaurants.where({name: place})).length === 0) {
+		  	debugger;
+		  	var restaurant = new Galbissam.Models.Restaurant({ name: place });
+		  	restaurant.save({},{
+		  		success: function () {
+		  			Galbissam.Collections.restaurants.add(restaurant)
+		  			debugger;
+		  			return callback(restaurant);
+		  		}
+		  	})
+		  } else {
+		  	debugger;
+		  	return callback(Galbissam.Collections.restaurants.where({name: place})[0])
+		 }
+		}
+	  });
+	}
 });

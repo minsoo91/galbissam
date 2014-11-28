@@ -7,8 +7,7 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 		"":"index",
 		"photos/new": "newPhoto",
 		"photos/:id": "showPhoto",
-		"restaurants/": "restaurantsIndex",
-		"restaurants/:id": "restaurantsShow"
+		"restaurants/:id": "showRestaurant"
 	},
 
 	index: function () {
@@ -37,6 +36,16 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 		});
 
 		this._swapView(showView);
+	},
+
+	showRestaurant: function (id) {
+		var restaurant = Galbissam.Collections.restaurants.getOrFetch(id);
+		var restaurantShowView = new Galbissam.Views.RestaurantShow({
+			model: restaurant,
+			collection: Galbissam.Collections.restaurants
+		})
+  
+		this._swapView(restaurantShowView)
 	},
 
 	_swapView: function (view) {
