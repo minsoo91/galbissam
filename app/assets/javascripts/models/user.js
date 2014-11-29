@@ -1,10 +1,10 @@
-window.Galbissam.Models.Restaurant = Backbone.Model.extend({
-	urlRoot: "/api/restaurants",
+window.Galbissam.Models.User = Backbone.Model.extend({
+	urlRoot: "/users",
 
 	photos: function () {
 		if (!this._photos) {
 			this._photos = new Galbissam.Collections.Photos({
-				restaurant: this
+				user: this
 			});
 		}
 		return this._photos

@@ -1,7 +1,9 @@
 window.Galbissam.Views.PhotoShow = Backbone.View.extend({
 	className: "showPhoto",
-	initialize: function () {
-		this.listenTo(this.model, "sync", this.render)
+	initialize: function (options) {
+		this.listenTo(this.model, "sync", this.render);
+		this.user = options.user;
+		this.listenToOnce(this.user, "sync", this.render);
 	},
 
 	events: {
@@ -10,7 +12,11 @@ window.Galbissam.Views.PhotoShow = Backbone.View.extend({
 
 	template: JST["photos/show"],
 	render: function () {
-		var content = this.template({ photo: this.model });
+		this.user.set({ id: this.model.get("user_id") });
+		if (this.model.get("user_id")) {
+			this.user.fetch();
+		}
+		var content = this.template({ photo: this.model, user: this.user });
 		this.$el.html(content);
 
 		return this;

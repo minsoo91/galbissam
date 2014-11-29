@@ -3,7 +3,6 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	events: {
 		"submit form": "upload",
 		"change input[type='filepicker']": "preview",
-		// "keyup #photo_place": "googlePlaceSearch"
 	},
 	template: JST['photos/form'],
 	render: function () {
@@ -28,12 +27,14 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		var url = $('input[type="filepicker"]').val()
 		var place = $form.find('#photo_place').val()
 		var review = $form.find('#photo_review').val()
-
+		var restaurant = restaurant;
 		var restaurant_id = restaurant.get('id');
 
 	    var newPhoto = new Galbissam.Models.Photo();
 	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id }, {
 	      success: function () {
+	      	restaurant.photos().fetch();
+	      	restaurant.photos().add(newPhoto); // might need suucess
 	        Backbone.history.navigate("", { trigger: true })
 	      }
 	    })
@@ -53,17 +54,14 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	  Galbissam.Collections.restaurants.fetch({
 	  	success: function () {
 		  if ((Galbissam.Collections.restaurants.where({name: place})).length === 0) {
-		  	debugger;
 		  	var restaurant = new Galbissam.Models.Restaurant({ name: place });
 		  	restaurant.save({},{
 		  		success: function () {
 		  			Galbissam.Collections.restaurants.add(restaurant)
-		  			debugger;
 		  			return callback(restaurant);
 		  		}
 		  	})
 		  } else {
-		  	debugger;
 		  	return callback(Galbissam.Collections.restaurants.where({name: place})[0])
 		 }
 		}
