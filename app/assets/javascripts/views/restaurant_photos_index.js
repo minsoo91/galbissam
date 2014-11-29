@@ -8,14 +8,18 @@ window.Galbissam.Views.RestaurantShow = Backbone.View.extend({
 	className: "explore",
 	template: JST['restaurants/show'],
 	render: function () {
-		this.model.photos().fetch();
+		var that = this;
+		
 		var content = this.template({ restaurant: this.model});
-		
-		
 
 		this.$el.html(content);
 		$rating = this.$el.find('#restaurant-rating');
-		$rating.raty({readOnly: true, score: 5});
+		debugger;
+		this.model.photos().fetch({
+			success: function () {
+				$rating.raty({readOnly: true, score: that.model.get("rating")});
+			}
+		})
 		return this;
 	}
 });

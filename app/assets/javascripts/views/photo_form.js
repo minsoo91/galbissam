@@ -28,15 +28,24 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		var place = $form.find('#photo_place').val()
 		var review = $form.find('#photo_review').val()
 		var rating = $('#restaurant-rating').find('input[name="score"]').val()
-		debugger;
 		var restaurant = restaurant;
 		var restaurant_id = restaurant.get('id');
 
 	    var newPhoto = new Galbissam.Models.Photo();
 	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating }, {
 	      success: function () {
-	      	restaurant.photos().fetch();
-	      	restaurant.photos().add(newPhoto); // might need suucess
+	      	restaurant.photos().add(newPhoto);
+	      	restaurant.photos().fetch({
+	      		success: function () {
+	      			var result = 0;
+					for (var i = 0; i < restaurant.photos().length; i++) {
+						var photoRating = restaurant.photos().models[i].get("rating")
+						result += photoRating
+					}
+					restaurant.set("rating", result / restaurant.photos().length);
+					restaurant.save();
+	      		}
+	      	});
 	        Backbone.history.navigate("", { trigger: true })
 	      }
 	    })

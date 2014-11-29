@@ -18,6 +18,15 @@ class Api::RestaurantsController < ApplicationController
 		end
 	end
 
+	def update
+		@restaurant = Restaurant.find(params[:id])
+		if @restaurant.update(restaurant_params)
+			render json: @restaurant
+		else
+			render json: @restaurant.errors.full_messages.to_sentence
+		end
+	end
+	
 	private
 	def restaurant_params
 		params.require(:restaurant).permit(:name, :rating)
