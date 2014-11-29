@@ -18,8 +18,10 @@ window.Galbissam.Views.RestaurantShow = Backbone.View.extend({
 		this.model.photos().fetch({
 			success: function () {
 				$rating.raty({readOnly: true, score: that.model.get("rating")});
+				$rating.append(" (" + that.model.photos().length + " reviews)");
 			}
 		})
+
 		return this;
 	}
 });
