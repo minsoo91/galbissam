@@ -1,5 +1,6 @@
 <h3><%= restaurant.get("name") %></h3>
-
+<div class="dropdown">Find it on Google Maps</div>
+<div id = "restaurant-rating"></div>
 <% restaurant.photos().each(function (photo) { %>
   <div class="col-sm-6 col-md-4" id="image-wrapper">
     <a href="#/photos/<%= photo.id %>" class="thumbnail">

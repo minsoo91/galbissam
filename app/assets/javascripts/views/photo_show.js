@@ -18,7 +18,7 @@ window.Galbissam.Views.PhotoShow = Backbone.View.extend({
 		}
 		var content = this.template({ photo: this.model, user: this.user });
 		this.$el.html(content);
-
+		this.$el.find('#rating').raty({score: this.model.get("rating"), readOnly: true})
 		return this;
 	},
 

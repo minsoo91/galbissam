@@ -27,11 +27,13 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		var url = $('input[type="filepicker"]').val()
 		var place = $form.find('#photo_place').val()
 		var review = $form.find('#photo_review').val()
+		var rating = $('#restaurant-rating').find('input[name="score"]').val()
+		debugger;
 		var restaurant = restaurant;
 		var restaurant_id = restaurant.get('id');
 
 	    var newPhoto = new Galbissam.Models.Photo();
-	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id }, {
+	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating }, {
 	      success: function () {
 	      	restaurant.photos().fetch();
 	      	restaurant.photos().add(newPhoto); // might need suucess
@@ -45,6 +47,8 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		$('#upload-preview').html("<img src=" + url + ">");
 		$('#upload-preview').append("<input type='text' id='photo_review' class='form-control' name='photo[review]' style='width: 400px' placeholder='Write something about your food here'>");
 		$('#upload-preview').append("<input type='text' id='photo_place' class='form-control' name='photo[place]' style='width: 400px' placeholder='Where is this?'>")
+		$('#restaurant-rating').text("Rate your experience! ")
+		$('#restaurant-rating').raty()
 		input = document.getElementById('photo_place');
 		var autocomplete = new google.maps.places.Autocomplete(input);
 	},
