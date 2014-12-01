@@ -1,7 +1,7 @@
 <h3><%= restaurant.get("name") %>
-<a href="#/">(<i class="fa fa-map-marker"></i> Find it!)</a>
+<a href="#/" id="mapclick">(<i class="fa fa-map-marker"></i> Find it!)</a>
 </h3>
-<div class="dropdown"></div>
+<div id="map-show"></div>
 <div id = "restaurant-rating"></div>
 <% restaurant._photos.each(function (photo) { %>
   <div class="col-sm-6 col-md-4" id="image-wrapper">
