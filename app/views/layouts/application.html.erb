@@ -10,23 +10,8 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
- <% if flash[:errors] %>
-	<%= flash.now[:errors] %>
- <% end %>
-<% if current_user %>
-  <ul class="nav nav-tabs">
-    <li role ="presentation">
-      <%= link_to "Explore", "/#", method: :get %>
-    </li>
-    <li role ="presentation">
-      <%= link_to "Share your story", "/#/photos/new", method: :get %>
-    </li>
-    <li role ="presentation">
-      <%= link_to "Sign Out", session_url, method: :delete  %>
-    </li>
-  </ul>
-<% end %>
+<body onload="document.getElementById('splash').style.opacity='1'">
+
 
 <%= yield %>
 <script>

@@ -6,7 +6,7 @@
 		margin: 0 auto; 
 	    width: 100%; 
 	    position: relative; 
-	    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+	    box-shadow: 0 0 0px rgba(0,0,0,0.8);
 	    padding: 100px 0;
 	}
 	#home { 
@@ -40,89 +40,102 @@
 		margin-right: 20px;
 		margin-left: 25px;
 	}
+	.li {
+		list-style-type: none;
+	}
+	.thumbnail {
+		width: 100px;
+		display: inline-block;
+	}
+	a:hover {
+		text-decoration: none;
+	}
 </style>
-<section id="intro" data-speed="6" data-type="background">
-	<div class="container">
-        <div class="span4 text-center">
-          <img src="assets/salad.jpg">
-        </div>
-
-    	<div class="hero-unit">
-
-    		<h2><strong>Know</strong> your food before you order.</h2>
-    		<p>Real people take photos of real food on restaurant menus. Never order food without knowing what your food is going to look like again.</p>
-    	</div>
-    </div>
-</section>
-
-<!-- Section #2 -->
-<section id="home" data-speed="4" data-type="background">
-	<div class="container">
-		<div class="row-fluid">
-	        <div class="span4 well">
-	          <center><i class="fa fa-camera-retro fa-5x"></i>
-	          <h2>Share your experience</h2></center>
-	          <p>Share your passion for food with the world! Whether you're grabbing a quick bite on the road or you're sitting in your favorite local coffee shop, share your story with us!</p>
-	        </div><!-- /.span4 -->
-	        <div class="span4 well">
-	          <center><i class="fa fa-globe fa-5x"></i>
-	          <h2>Find new places to eat</h2></center>
-	          <p>Trying to figure out what to eat? We got your back! Scroll through millions of photos of food uploaded by people just like you. Never try something on the menu without seeing what it looks like again.</p>
-	        </div><!-- /.span4 -->
-	        <div class="span4 well">
-	          <center><i class="fa fa-dollar fa-5x"></i>
-	          <h2>Take advantage of exclusive deals</h2></center>
-	          <p>Our partner restaurants want you! Browse nearby restaurants to see what kind of deals are available.</p>
-	        </div><!-- /.span4 -->
-    	</div>
-    </div>
-</section>
-
-<!-- Section #3 -->
-<section id="about" data-speed="2" data-type="background">
-	<div class="container">
-		<div class="page-header">
-			<h1>Attention food photographers! <small>Save the world from bad food!</small></h1>
-		</div>
-		<div class="row-fluid">
-	        <div class="span4">
-	          <h2>We <3 Food</h2>
-	          <p>We love food. We especially love looking at pictures of food. When you upload your photos onto our application, you are not only showcasing your wonderful talent, but also dramatically improving the food experience of everyone that uses our app.</p>
-	          <p>With your photos and reviews, we can effectively provide support to the local restaurants that enrich our dining experience while helping diners to avoid ordering terrible food.</p>
+<div id="splash">
+	<section id="intro" data-speed="6" data-type="background">
+		<div class="container">
+	        <div class="span4 text-center">
+	          <a class="thumbnail" href="users/new">Sign Up!</a>
+	          <img src="assets/salad.jpg">
+	          <a class="thumbnail" href="session/new">Sign in!</a>
 	        </div>
-	        <div style="height: 300px">
-		        <center>
-			        <i class="fa fa-cutlery fa-5x"> +</i> &nbsp; 
-					<i class="fa fa-camera fa-5x"> =</i> &nbsp; 
-					<i class="fa fa-heart fa-5x"></i> 
-				</center>
+
+	    	<div class="hero-unit">
+	    		<h2><strong>Know</strong> your food before you order.</h2>
+	    		<p>Real people take photos of real food on restaurant menus. Never order food without knowing what your food is going to look like again.</p>
+	    	</div>
+	    </div>
+	</section>
+
+	<!-- Section #2 -->
+	<section id="home" data-speed="4" data-type="background">
+		<div class="container">
+			<div class="row-fluid">
+		        <div class="span4 well">
+		          <center><i class="fa fa-camera-retro fa-5x"></i>
+		          <h2>Share your experience</h2></center>
+		          <p>Share your passion for food with the world! Whether you're grabbing a quick bite on the road or you're sitting in your favorite local coffee shop, share your story with us!</p>
+		        </div><!-- /.span4 -->
+		        <div class="span4 well">
+		          <center><i class="fa fa-globe fa-5x"></i>
+		          <h2>Find new places to eat</h2></center>
+		          <p>Trying to figure out what to eat? We got your back! Scroll through millions of photos of food uploaded by people just like you. Never try something on the menu without seeing what it looks like again.</p>
+		        </div><!-- /.span4 -->
+		        <div class="span4 well">
+		          <center><i class="fa fa-dollar fa-5x"></i>
+		          <h2>Take advantage of exclusive deals</h2></center>
+		          <p>Our partner restaurants want you! Browse nearby restaurants to see what kind of deals are available.</p>
+		        </div><!-- /.span4 -->
+	    	</div>
+	    </div>
+	</section>
+
+	<!-- Section #3 -->
+	<section id="about" data-speed="2" data-type="background">
+		<div class="container">
+			<div class="page-header">
+				<h1>Attention food photographers! <small>Save the world from bad food!</small></h1>
 			</div>
-	        <!-- /.span4 -->
-<!-- 	        <div class="span4">
-	          <h2>Log In</h2>
-	          <form class="form">
-				  <div class="control-group">
-				    <label class="control-label" for="inputEmail">Email</label>
-				    <div class="controls">
-				      <input type="text" id="inputEmail" placeholder="Email">
-				    </div>
-				  </div>
-				  <div class="control-group">
-				    <label class="control-label" for="inputPassword">Password</label>
-				    <div class="controls">
-				      <input type="password" id="inputPassword" placeholder="Password">
-				    </div>
-				  </div>
-				  <div class="control-group">
-				    <div class="controls">
-				      <label class="checkbox">
-				        <input type="checkbox"> Remember me <br><br>
-				      </label>
-				      <button type="submit" class="btn btn-success">Sign in</button>
-				    </div>
-				  </div>
-				</form>
-	        </div> -->
-    	</div>
-    </div>
-</section>
+			<div class="row-fluid">
+		        <div class="span4">
+		          <h2>We <3 Food</h2>
+		          <p>We love food. We especially love looking at pictures of food. When you upload your photos onto our application, you are not only showcasing your wonderful talent, but also dramatically improving the food experience of everyone that uses our app.</p>
+		          <p>With your photos and reviews, we can effectively provide support to the local restaurants that enrich our dining experience while helping diners to avoid ordering terrible food.</p>
+		        </div>
+		        <div style="height: 300px">
+			        <center>
+				        <i class="fa fa-cutlery fa-5x"> +</i> &nbsp; 
+						<i class="fa fa-camera fa-5x"> =</i> &nbsp; 
+						<i class="fa fa-heart fa-5x"></i> 
+					</center>
+				</div>
+		        <!-- /.span4 -->
+	<!-- 	        <div class="span4">
+		          <h2>Log In</h2>
+		          <form class="form">
+					  <div class="control-group">
+					    <label class="control-label" for="inputEmail">Email</label>
+					    <div class="controls">
+					      <input type="text" id="inputEmail" placeholder="Email">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <label class="control-label" for="inputPassword">Password</label>
+					    <div class="controls">
+					      <input type="password" id="inputPassword" placeholder="Password">
+					    </div>
+					  </div>
+					  <div class="control-group">
+					    <div class="controls">
+					      <label class="checkbox">
+					        <input type="checkbox"> Remember me <br><br>
+					      </label>
+					      <button type="submit" class="btn btn-success">Sign in</button>
+					    </div>
+					  </div>
+					</form>
+		        </div> -->
+	    	</div>
+	    </div>
+	</section>
+</div>
