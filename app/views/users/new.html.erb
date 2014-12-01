@@ -1,26 +1,30 @@
-<h1>Sign up!</h1>
-<form action="/users" method="POST">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
-     
-  <label for="user_username">Username</label>
-  <input 
-    type="text" 
-    name="user[username]" 
-    id="user_username"
-    value="<%= @user.username if @user %>">
-  <label for="user_email">E-mail</label>
-  <input 
-    type="text" 
-    name="user[email]" 
-    id="user_email"
-    value="<%= @user.email if @user %>">
-  <label for ="user_password">Password</label>
-  <input 
-    type="password" 
-    name="user[password]" 
-    id="user_password">
-  <input type="submit" value="Create Account!">
-</form>
+<div class="sign">
+  <div id="sign-content">
+    <h1>Sign up!</h1>
+    <form action="/users" method="POST">
+      <input
+         name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
+         
+      <input 
+        type="text" 
+        name="user[username]" 
+        id="user_username"
+        placeholder="Username"
+        value="<%= @user.username if @user %>">
+      <input 
+        type="text" 
+        name="user[email]" 
+        id="user_email"
+        placeholder="Email"
+        value="<%= @user.email if @user %>">
+      <input 
+        type="password" 
+        name="user[password]" 
+        placeholder="Password"
+        id="user_password">
+      <input type="submit" value="Create Account!" class="btn btn-primary">
+    </form>
+  </div>
+</div>
