@@ -1,4 +1,4 @@
-window.Galbissam.Views.PhotoShow = Backbone.View.extend({
+window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 	className: "showPhoto",
 	initialize: function (options) {
 		this.listenTo(this.model, "sync", this.render);
