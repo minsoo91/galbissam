@@ -1,17 +1,19 @@
-<div class="sign">
-	<div id="sign-content">
-		<h1>Sign In</h1>
+<div class="sign-container">
+	<div class="sign">
+		<div id="sign-content">
+			<h1>Sign In</h1>
 
-		<form action="/session" method="post">
-		  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-		    <input name="user[email]" 
-		           type="text"
-		           placeholder="Email"><br>
-		    <input name="user[password]" 
-		           type="password"
-		           placeholder="Password"><br>
-		  <input type="submit" value="Submit" class="btn btn-primary"><br>
-		</form>
-		<a href="/users/new">Don't have an account? Sign Up!</a>
+			<form action="/session" method="post">
+			  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			    <input name="user[email]" 
+			           type="text"
+			           placeholder="Email"><br>
+			    <input name="user[password]" 
+			           type="password"
+			           placeholder="Password"><br>
+			  <input type="submit" value="Submit" class="btn btn-primary"><br>
+			</form>
+			<a href="/users/new">Don't have an account? Sign Up!</a>
+		</div>
 	</div>
 </div>
