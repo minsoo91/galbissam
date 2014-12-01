@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 		render json: @users
 	end
 	def show
-		@user = current_user
-
+		# @user = current_user
+		@user = User.find(params[:id])
 		render json: @user.to_json(include: :photos)
 	end
 

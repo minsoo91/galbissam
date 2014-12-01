@@ -31,7 +31,7 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 
 	showPhoto: function (id) {
 		var photo = Galbissam.Collections.photos.getOrFetch(id);
-		var user = new Galbissam.Models.User();
+		var user = new Galbissam.Models.User({ id: photo.get("user_id")});
 		var showView = new Galbissam.Views.PhotoShow({
 			model: photo,
 			user: user
@@ -52,6 +52,7 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 
 	showUser: function (id) {
 		var user = Galbissam.Collections.users.getOrFetch(id);
+		// don't get the current user!
 		var userShowView = new Galbissam.Views.UserShow({
 			model: user,
 			collection: Galbissam.Collections.users
