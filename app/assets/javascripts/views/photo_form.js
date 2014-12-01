@@ -14,12 +14,11 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	upload: function (event) {
 	  event.preventDefault();
 	  $form = $(event.currentTarget)
+	  var place = $form.find('#photo_place').val()
 	  var url = $('input[type="filepicker"]').val()
 	  if (url.length === 0) {
 	  	$('#upload-preview').html("<div class='alert-danger'>Please pick a file first</div>")
-	  }
-	  var place = $form.find('#photo_place').val()
-
+	  }	
 	  var restaurant = this.doesPlaceExist(place, this.savePhoto);
 	},
 
@@ -31,22 +30,28 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		var restaurant = restaurant;
 		var restaurant_id = restaurant.get('id');
 
-	    var newPhoto = new Galbissam.Models.Photo();
-	    newPhoto.save({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating }, {
+	    var newPhoto = new Galbissam.Models.Photo({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating });
+	    Galbissam.Collections.photos.create(newPhoto, {
 	      success: function () {
-	      	restaurant.photos().add(newPhoto);
 	      	restaurant.photos().fetch({
 	      		success: function () {
+	      			restaurant._photos = new Galbissam.Collections.Photos(restaurant.photos().where({restaurant_id: restaurant.id}))
+	      			restaurant.photos();
 	      			var result = 0;
 					for (var i = 0; i < restaurant.photos().length; i++) {
 						var photoRating = restaurant.photos().models[i].get("rating")
 						result += photoRating
 					}
 					restaurant.set("rating", result / restaurant.photos().length);
-					restaurant.save();
+					
+					restaurant.save({}, {
+						success: function () {
+							Backbone.history.navigate("", { trigger: true })
+						}
+					});
+					
 	      		}
 	      	});
-	        Backbone.history.navigate("", { trigger: true })
 	      }
 	    })
 	},

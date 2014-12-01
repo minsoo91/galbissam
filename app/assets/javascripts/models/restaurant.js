@@ -4,7 +4,7 @@ window.Galbissam.Models.Restaurant = Backbone.Model.extend({
 	photos: function () {
 		if (!this._photos) {
 			this._photos = new Galbissam.Collections.Photos({
-				restaurant: this
+				restaurant_id: this.id
 			});
 		}
 		return this._photos
