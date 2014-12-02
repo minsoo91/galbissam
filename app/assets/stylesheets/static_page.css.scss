@@ -25,6 +25,7 @@
   padding: 3px 20px;
   font-size: 18px;
   line-height: 24px;
+  text-align: center;
 }
 
 .tt-suggestion.tt-cursor {
@@ -35,4 +36,11 @@
 
 .tt-suggestion p {
   margin: 0;
+}
+
+.dataset-header {
+  margin: 0 20px 5px 20px;
+  padding: 3px 0;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
 }
