@@ -52,6 +52,8 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 			this.nextPhoto();
 		} else if (code == 82) {
 			this.randomPhoto();
+		} else if (code == 76) {
+			this.likePhoto();
 		}
 	},
 	previousPhoto: function (event) {

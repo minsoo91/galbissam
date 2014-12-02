@@ -3,10 +3,20 @@
 </h3>
 <div id="map-show"></div>
 <div id = "restaurant-rating"></div>
-<% restaurant._photos.each(function (photo) { %>
-  <div class="col-sm-6 col-md-4" id="image-wrapper">
-    <a href="#/photos/<%= photo.id %>" class="thumbnail">
-     <img src="<%= photo.get("filepicker_url") %>">
-    </a>
-  </div>
-<% }) %>
+<div id = "restaurant-menu"></div>
+	<h3>MENU</h3>
+	<% restaurant._photos.each(function (photo) { %>
+	  <div class="restaurant-menu-item">
+		  <div class="col-sm-6 col-md-4" id="image-wrapper">
+		    <a href="#/photos/<%= photo.id %>" class="thumbnail">
+		     <img src="<%= photo.get("filepicker_url") %>">
+		    </a>
+		  </div>
+		  <div class="restaurant-blurb">
+			  <span style="font-size: 20px"><strong><%= photo.get("name") %></strong></span>
+			  <br>
+			  <span>"<%= photo.get("review") %>"</span>
+		  </div>
+	  </div>
+	<% }) %>
+</div>

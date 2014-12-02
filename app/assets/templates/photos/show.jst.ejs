@@ -6,7 +6,7 @@
   </ul>
 </nav>
 <div id="photo-show" tabindex="-1">
-	<h4>Posted By:
+	<h4><strong>'<%= photo.get("name") %>'</strong> -
 	<a href="#/users/<%= photo.get("user_id") %>">
 		<%= user.get("username") %>
 	</a>

@@ -24,13 +24,14 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 
 	savePhoto: function (restaurant) {
 		var url = $('input[type="filepicker"]').val()
+		var name = $form.find('#photo_name').val()
 		var place = $form.find('#photo_place').val()
 		var review = $form.find('#photo_review').val()
 		var rating = $('#restaurant-rating').find('input[name="score"]').val()
 		var restaurant = restaurant;
 		var restaurant_id = restaurant.get('id');
 
-	    var newPhoto = new Galbissam.Models.Photo({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating });
+	    var newPhoto = new Galbissam.Models.Photo({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating, "name": name });
 	    Galbissam.Collections.photos.create(newPhoto, {
 	      success: function () {
 	      	restaurant.photos().fetch({
@@ -59,6 +60,7 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	preview: function () {
 		var url = $('input[type="filepicker"]').val()
 		$('#upload-preview').html("<img src=" + url + ">");
+		$('#upload-preview').append("<input type='text' id='photo_name' class='form-control' name='photo[name]' style='width: 400px' placeholder='What is this food called?'>")
 		$('#upload-preview').append("<input type='text' id='photo_review' class='form-control' name='photo[review]' style='width: 400px' placeholder='Write something about your food here'>");
 		$('#upload-preview').append("<input type='text' id='photo_place' class='form-control' name='photo[place]' style='width: 400px' placeholder='Where is this?'>")
 		$('#restaurant-rating').text("Rate your experience! ")
