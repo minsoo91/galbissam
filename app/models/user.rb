@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
 		:photos,
 		class_name: "Photo",
 		foreign_key: :user_id,
-		primary_key: :id
+		primary_key: :id,
+		dependent: :destroy
 	)
 
 	after_initialize :ensure_session_token

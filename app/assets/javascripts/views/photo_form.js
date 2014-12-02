@@ -19,10 +19,11 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	  if (url.length === 0) {
 	  	$('#upload-preview').html("<div class='alert-danger'>Please pick a file first</div>")
 	  }	
-	  var restaurant = this.doesPlaceExist(place, this.savePhoto);
+	  this.doesPlaceExist(place, this.doesMenuExist);
 	},
 
-	savePhoto: function (restaurant) {
+	savePhoto: function (restaurant, menuitem) {
+		// get all the attributes necessary to save the photo
 		var url = $('input[type="filepicker"]').val()
 		var name = $form.find('#photo_name').val()
 		var place = $form.find('#photo_place').val()
@@ -30,8 +31,11 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		var rating = $('#restaurant-rating').find('input[name="score"]').val()
 		var restaurant = restaurant;
 		var restaurant_id = restaurant.get('id');
+		var menuitem = menuitem;
+		var menu_item_id = menuitem.get('id');
 
-	    var newPhoto = new Galbissam.Models.Photo({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id , "rating": rating, "name": name });
+		// create new photo 
+	    var newPhoto = new Galbissam.Models.Photo({ "review": review, "filepicker_url": url, "place": place, "restaurant_id": restaurant_id, "menu_item_id": menu_item_id, "rating": rating, "name": name });
 	    Galbissam.Collections.photos.create(newPhoto, {
 	      success: function () {
 	      	restaurant.photos().fetch({
@@ -75,16 +79,35 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	  	success: function () {
 		  if ((Galbissam.Collections.restaurants.where({name: place})).length === 0) {
 		  	var restaurant = new Galbissam.Models.Restaurant({ name: place });
-		  	restaurant.save({},{
+		  	Galbissam.Collections.restaurants.create(restaurant, {
 		  		success: function () {
-		  			Galbissam.Collections.restaurants.add(restaurant)
-		  			return callback(restaurant);
+		  			return callback(that, restaurant);
 		  		}
 		  	})
 		  } else {
-		  	return callback(Galbissam.Collections.restaurants.where({name: place})[0])
+		  	return callback(that, Galbissam.Collections.restaurants.where({name: place})[0])
 		 }
 		}
 	  });
+	},
+	// picks up restaurant (new or fetched) from doesPlaceExist
+	doesMenuExist: function (that, restaurant) {
+		debugger
+		var name = $form.find('#photo_name').val()
+		Galbissam.Collections.menuitems.fetch({
+			success: function () {
+				if ((Galbissam.Collections.menuitems.where({name: name})).length === 0) {
+					var menuitem = new Galbissam.Models.MenuItem({ name: name });
+					Galbissam.Collections.menuitems.create(menuitem, {
+						success: function () {
+							debugger;
+							that.savePhoto(restaurant, menuitem)
+						}
+					})
+				} else {
+					that.savePhoto(restaurant, Galbissam.Collections.menuitems.where({name: name})[0])
+				}
+			}
+		})
 	}
 });

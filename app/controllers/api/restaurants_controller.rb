@@ -5,8 +5,8 @@ class Api::RestaurantsController < ApplicationController
 	end
 
 	def show
-		@restaurant = Restaurant.includes(:photos).find(params[:id])
-		render :show
+		@restaurant = Restaurant.find(params[:id])
+		render json: @restaurant.to_json(include: :photos)
 	end
 
 	def create
