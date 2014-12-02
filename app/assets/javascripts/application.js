@@ -11,6 +11,9 @@
 // about supported directives.
 //
 //= require jquery
+//= require bloodhound.min
+//= require typeahead.bundle.min
+//= require typeahead.jquery.min
 //= require jquery.raty
 //= require jquery_ujs
 //= require underscore
