@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 	attr_reader :password
 	validates :username, :email, :session_token, :password_digest, presence: true
-	validates :password, length: { minimum: 6 }
+	# DISABLE FOR RAKE SEED
+	# validates :password, length: { minimum: 6 }
 
 	has_many(
 		:photos,
