@@ -6,6 +6,7 @@ class Api::MenuitemsController < ApplicationController
 
 	def show
 		@menu_items = MenuItem.find(params[:id])
+		render json: @menu_items.to_json(include: :photos)
 	end
 
 	def create

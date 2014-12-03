@@ -7,6 +7,8 @@ window.Galbissam = {
   	new Galbissam.Routers.Router({
   		$rootEl: $('#content')
   	});
+    globalAutoComplete = new Galbissam.Views.Autocomplete();
+    globalAutoComplete.render();
   	Backbone.history.start();
   }
 };

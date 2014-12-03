@@ -8,7 +8,8 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 		"photos/new": "newPhoto",
 		"photos/:id": "showPhoto",
 		"restaurants/:id": "showRestaurant",
-		"users/:id": "showUser"
+		"users/:id": "showUser",
+		"menuitems/:id": "showMenuItem"
 	},
 
 	index: function () {
@@ -60,7 +61,17 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 			collection: Galbissam.Collections.users
 		})
 
-		this._swapView(userShowView)
+		this._swapView(userShowView);
+	},
+
+	showMenuItem: function (id) {
+		var menuItem = Galbissam.Collections.menuitems.getOrFetch(id);
+		var menuItemShowView = new Galbissam.Views.MenuItemShow({
+			model: menuItem,
+			collection: Galbissam.Collections.menuitems
+		})
+
+		this._swapView(menuItemShowView);
 	},
 
 	_swapView: function (view) {

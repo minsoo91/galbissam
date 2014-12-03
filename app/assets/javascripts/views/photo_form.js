@@ -51,6 +51,7 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 					
 					restaurant.save({}, {
 						success: function () {
+							globalAutoComplete.render();
 							Backbone.history.navigate("", { trigger: true })
 						}
 					});
@@ -92,7 +93,6 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	},
 	// picks up restaurant (new or fetched) from doesPlaceExist
 	doesMenuExist: function (that, restaurant) {
-		debugger
 		var name = $form.find('#photo_name').val()
 		Galbissam.Collections.menuitems.fetch({
 			success: function () {
@@ -100,7 +100,6 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 					var menuitem = new Galbissam.Models.MenuItem({ name: name });
 					Galbissam.Collections.menuitems.create(menuitem, {
 						success: function () {
-							debugger;
 							that.savePhoto(restaurant, menuitem)
 						}
 					})

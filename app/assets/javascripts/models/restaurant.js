@@ -10,13 +10,13 @@ window.Galbissam.Models.Restaurant = Backbone.Model.extend({
 		return this._photos
 	},
 
-	menuItems: function () {
-		if(!this._menuItems) {
-			this._menuItems = new Galbissam.Collections.MenuItems({
-				restaurant_id: this.id
-			})
-		}
-	},
+	// menuItems: function () {
+	// 	if(!this._menuItems) {
+	// 		this._menuItems = new Galbissam.Collections.MenuItems({
+	// 			restaurant_id: this.id
+	// 		})
+	// 	}
+	// },
 
 	parse: function(response) {
 	    if (response.photos) {

@@ -17,6 +17,7 @@ gem 'ejs'
 gem 'filepicker-rails'
 gem 'figaro'
 gem 'geocoder'
+gem 'seed_dump'
 
 
 group :development do
