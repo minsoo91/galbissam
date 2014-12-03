@@ -12,14 +12,12 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
 		});
 		this.$el.html(content);
 		this.listenForScroll();
-		// this.$el.find('#spinner').addClass("sk-spinner sk-spinner-rotating-plane")
 		return this;
 	},
 
 	listenForScroll: function () {
 		$(window).off("scroll");
-		var throttledCallback = _.throttle(this.nextPage.bind(this), 2500);
-		this.$el.find('#spinner').addClass("sk-spinner sk-spinner-rotating-plane")
+		var throttledCallback = _.throttle(this.nextPage.bind(this), 500);
 		$(window).on("scroll", throttledCallback);
 	},
 
@@ -28,6 +26,9 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
       console.log("scrolled to bottom!");
       if (self.collection.page_number < self.collection.total_pages) {
+      	if (!self.$('#spinner').hasClass("sk-spinner sk-spinner-rotating-plane")) {
+			self.$('#spinner').addClass("sk-spinner sk-spinner-rotating-plane")
+		}
         self.collection.fetch({
           data: { page: self.collection.page_number + 1 },
           remove: false,

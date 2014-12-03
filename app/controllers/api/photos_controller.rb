@@ -1,6 +1,6 @@
 class Api::PhotosController < ApplicationController
 	def index
-		@photos = Photo.page(params[:page]).per(12)
+		@photos = Photo.page(params[:page]).per(9)
 		respond_to do |format|
 			format.json {
 				render json: {

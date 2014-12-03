@@ -1,4 +1,4 @@
-<div id="allphotos">
+<div class="clearfix" id="allphotos">
 	<% photos.each(function (photo) { %>
 	  <div class="col-sm-6 col-md-4" id="image-wrapper">
 	    <a href="#/photos/<%= photo.id %>" class="thumbnail">
@@ -7,4 +7,4 @@
 	  </div>
 	<% }) %>
 </div>
-<div id="spinner"></div>
+<div class="sk-spinner sk-spinner-rotating-plane" id="spinner"></div>
