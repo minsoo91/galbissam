@@ -1,87 +1,102 @@
 $(document).ready(function() {
-	var menuItems = [];
-	var restaurants = [];
-	var users = [];
+	var photosCollection = Galbissam.Collections.photos.fetch();
+	var restaurantsCollection = Galbissam.Collections.restaurants.fetch();
+	var usersCollection = Galbissam.Collections.users.fetch();
+	// REMEMBER THIS METHOD
+	$.when(photosCollection, restaurantsCollection, usersCollection).then(function() {
+		photosObjects = arguments[0][0]
+		restaurantsObjects = arguments[1][0]
+		usersObjects = arguments[2][0]
+		var photosArray = makeArray(photosObjects);
+		var restaurantsArray = makeArray(restaurantsObjects);
+		var usersArray = makeArray(usersObjects);
 
-	$.ajax('api/photos', {
-		success: function (data) {
-			for (var i = 0; i < data.length; i++) {
-				menuItems.push(data[i].name)
-			}
-			var foodItems = new Bloodhound({
-			  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-			  queryTokenizer: Bloodhound.tokenizers.whitespace,
-			  local: $.map(menuItems, function(photo) { return { value: photo }; })
-			});
-			foodItems.initialize();
+		initializeBloodHound(photosArray, restaurantsArray, usersArray)		
+	});
+});
 
-	 		$.ajax('api/restaurants', {
-	 			success: function (data) {
-	 				for (var i = 0; i < data.length; i++) {
-	 					restaurants.push(data[i].name)
-	 				}
-	 				var restaurantList = new Bloodhound({
-	 					datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-	 					queryTokenizer: Bloodhound.tokenizers.whitespace,
-	 					local: $.map(restaurants, function(location) { return { value: location}; })
-	 				})
-	 				restaurantList.initialize();
+function initializeBloodHound(photosArray, restaurantsArray, usersArray) {
+	var foodItems = new Bloodhound({
+	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+	  queryTokenizer: Bloodhound.tokenizers.whitespace,
+	  local: $.map(photosArray, function(photo) { return { value: photo }; })
+	});
 
-	 				$.ajax('users', {
-	 					success: function (data) {
-	 						for (var i = 0; i < data.length; i++) {
-	 							users.push(data[i].username)
-	 						}
-	 						var userList = new Bloodhound({
-	 							datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-	 							queryTokenizer: Bloodhound.tokenizers.whitespace,
-	 							local: $.map(users, function(user) { return { value: user}; })
-	 						})
-	 						userList.initialize();
-	 						$('#search').typeahead({
-							  hint: true,
-							  highlight: true,
-							  minLength: 1
-							},
-							{
-							  name: 'photos',
-							  displayKey: 'value',
-							  // `ttAdapter` wraps the suggestion engine in an adapter that
-							  // is compatible with the typeahead jQuery plugin
-							  source: foodItems.ttAdapter(),
-							  templates: {
-							  	header: '<h4 class="dataset-header">Menu Items</h4>'
-							  }
-							},
-							{
-								name: 'Restaurants',
-								displayKey: 'value',
-								source: restaurantList.ttAdapter(),
-								templates: {
-									header: '<h4 class="dataset-header">Restaurants</h4>'
-								}
-							},
-							{
-								name: 'Users',
-								displayKey: 'value',
-								source: userList.ttAdapter(),
-								templates: {
-									header: '<h4 class="dataset-header">Users</h4>'
-								}
-							});
-			 			}
-			 		})
-			 	}
-			 });
+	var restaurantList = new Bloodhound({
+		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+		queryTokenizer: Bloodhound.tokenizers.whitespace,
+		local: $.map(restaurantsArray, function(location) { return { value: location}; })
+	})
+	 				
+	var userList = new Bloodhound({
+		datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+		queryTokenizer: Bloodhound.tokenizers.whitespace,
+		local: $.map(usersArray, function(user) { return { value: user}; })
+	})
+
+	foodItems.initialize();
+	restaurantList.initialize();
+	userList.initialize();
+
+	initializeTypeAhead(foodItems, restaurantList, userList)
+}
+
+function initializeTypeAhead(foodItems, restaurantList, userList) {
+	$('#search').typeahead({
+	  hint: true,
+	  highlight: true,
+	  minLength: 1
+	},
+	{
+	  name: 'photos',
+	  displayKey: 'value',
+	  source: foodItems.ttAdapter(),
+	  templates: {
+	  	header: '<h4 class="dataset-header">Menu Items</h4>'
+	  }
+	},
+	{
+		name: 'Restaurants',
+		displayKey: 'value',
+		source: restaurantList.ttAdapter(),
+		templates: {
+			header: '<h4 class="dataset-header">Restaurants</h4>'
+		}
+	},
+	{
+		name: 'Users',
+		displayKey: 'value',
+		source: userList.ttAdapter(),
+		templates: {
+			header: '<h4 class="dataset-header">Users</h4>'
 		}
 	});
+	pushEntertoSearch();
+	$('#search-submit').on("click", searchSubmit);
+}
+
+function pushEntertoSearch() {
 	$('#search').keypress(function(event) {
 		if (event.keyCode == 13) {
 			searchSubmit();
 		}
-	})
-	$('#search-submit').on("click", searchSubmit);
-});
+	})	
+}
+
+function makeArray(ItemsObjects) {
+	var itemsArray = []
+	if (!ItemsObjects[0].name) {
+		for (var i = 0; i < ItemsObjects.length; i++) {
+			itemsArray.push(ItemsObjects[i].username)
+		}
+	} else {
+		for (var i = 0; i < ItemsObjects.length; i++) {
+			itemsArray.push(ItemsObjects[i].name)
+		}
+	}
+
+	return itemsArray
+}
 
 function searchSubmit(event) {
 	if (event) {
