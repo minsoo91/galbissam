@@ -1,6 +1,7 @@
 window.Galbissam.Views.UserShow = Backbone.View.extend({
 	className: "explore",
 	initialize: function () {
+		this.model.fetch();
 		this.listenTo(this.model, "sync", this.render)
 	},
 	template: JST['users/show'],
