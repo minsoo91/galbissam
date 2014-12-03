@@ -2,12 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.form-group {
+  width: 400px;
+}
+
+
+.form-control.typeahead.tt-input, .form-control.typeahead.tt-hint {
+  width: 400px;
+}
+
+#search {
+	width: 400px;
+	background-color: white;
+}
+
 .tt-hint {
   color: #999
 }
 
 .tt-dropdown-menu {
-  width: 200px;
+  width: 400px;
   margin-top: 12px;
   padding: 8px 0;
   background-color: #fff;
@@ -39,7 +53,7 @@
 }
 
 .dataset-header {
-  margin: 0 20px 5px 20px;
+  margin: 10px 20px 5px 20px;
   padding: 3px 0;
   border-bottom: 1px solid #ccc;
   text-align: center;
