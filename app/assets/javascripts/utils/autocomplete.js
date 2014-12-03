@@ -1,7 +1,7 @@
 $(document).ready(function() {
-	var photosCollection = Galbissam.Collections.photos.fetch();
-	var restaurantsCollection = Galbissam.Collections.restaurants.fetch();
-	var usersCollection = Galbissam.Collections.users.fetch();
+	photosCollection = Galbissam.Collections.photos.fetch();
+	restaurantsCollection = Galbissam.Collections.restaurants.fetch();
+	usersCollection = Galbissam.Collections.users.fetch();
 	// REMEMBER THIS METHOD
 	$.when(photosCollection, restaurantsCollection, usersCollection).then(function() {
 		photosObjects = arguments[0][0]
@@ -103,23 +103,24 @@ function searchSubmit(event) {
 		event.preventDefault();
 	}
 	searchQuery = $('#search').val()
-	var photosCollection = Galbissam.Collections.photos.fetch();
-	var restaurantsCollection = Galbissam.Collections.restaurants.fetch();
-	var usersCollection = Galbissam.Collections.users.fetch();
 	// REMEMBER THIS METHOD
 	$.when(photosCollection, restaurantsCollection, usersCollection).then(function() {
 		photosHash = { photos: arguments[0][0] };
 		restaurantsHash = { restaurants: arguments[1][0] };
 		usersHash = { users: arguments[2][0] };
-		if (matchItem(photosHash.photos, photosHash, searchQuery)) {
-			Backbone.history.navigate(matchItem(photosHash.photos, photosHash, searchQuery), { trigger: true })
-		} else if (matchItem(restaurantsHash.restaurants, restaurantsHash, searchQuery)) {
-			Backbone.history.navigate(matchItem(restaurantsHash.restaurants, restaurantsHash, searchQuery), { trigger: true })
-		} else {
-			Backbone.history.navigate(matchItem(usersHash.users, usersHash, searchQuery), { trigger: true })
-		}
+		navigateToURI(photosHash, restaurantsHash, usersHash, searchQuery)
 	})
 
+}
+
+function navigateToURI(photosHash, restaurantsHash, usersHash, searchQuery) {
+	if (matchItem(photosHash.photos, photosHash, searchQuery)) {
+		Backbone.history.navigate(matchItem(photosHash.photos, photosHash, searchQuery), { trigger: true })
+	} else if (matchItem(restaurantsHash.restaurants, restaurantsHash, searchQuery)) {
+		Backbone.history.navigate(matchItem(restaurantsHash.restaurants, restaurantsHash, searchQuery), { trigger: true })
+	} else {
+		Backbone.history.navigate(matchItem(usersHash.users, usersHash, searchQuery), { trigger: true })
+	}
 }
 
 function matchItem(items, itemsHash, searchQuery) {
