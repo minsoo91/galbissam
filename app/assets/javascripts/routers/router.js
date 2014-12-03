@@ -1,6 +1,5 @@
 window.Galbissam.Routers.Router = Backbone.Router.extend({
 	initialize: function (options) {
-		this.collection = options.collection;
 		this.$rootEl = options.$rootEl
 	},
 
@@ -15,9 +14,10 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 
 	index: function () {
 		// Galbissam.Collections.photos.fetch();
-		
+		var pagedCollection = new Galbissam.Collections.Photos();
+    	pagedCollection.fetch({data: { page: 1 } })
 		var indexView = new Galbissam.Views.PhotosIndex({
-			collection: this.collection
+			collection: pagedCollection
 		});
 
 		this._swapView(indexView);
