@@ -8,7 +8,25 @@ MenuItem.create!([
   {name: "Hamburger", price: nil},
   {name: "Strawberry Cheesecake", price: nil},
   {name: "Ahi Tuna", price: nil},
-  {name: "Sushi", price: nil}
+  {name: "Sushi", price: nil},
+  {name: "House Gyro", price: nil},
+  {name: "Greek Salad with Chicken", price: nil},
+  {name: "Salted Caramel Cake", price: nil},
+  {name: "Spinach Chicken Feta Sandwich", price: nil},
+  {name: "Lentil Soup", price: nil},
+  {name: "Lamb Sliders", price: nil},
+  {name: "Steak Tartare with quail yolk, toasted pine nuts, and Asian pear", price: nil},
+  {name: "Tofu with Scallion Dressing", price: nil},
+  {name: "Poached Sablefish with Spicy Daikon", price: nil},
+  {name: "Devilish Eggs", price: nil},
+  {name: "Chili Dog", price: nil},
+  {name: "Beignets", price: nil},
+  {name: "Prosciutto, Fig, Mascarpone flat bread", price: nil},
+  {name: "Green Tea Ice Cream", price: nil},
+  {name: "Orange Chicken", price: nil},
+  {name: "Veggie Burger", price: nil},
+  {name: "Xocolatl", price: nil},
+  {name: "Zeppole", price: nil}
 ])
 Photo.create!([
   {user_id: 1, review: "Stone pot!", filepicker_url: "https://www.filepicker.io/api/file/ObCTYYaWQyh6N8AxKtBb", place: "Koreana Food, Chestnut Street, Philadelphia, PA, United States", rating: 3, name: "Galbi Bibimbap", menu_item_id: 1, restaurant_id: 1},
@@ -24,8 +42,26 @@ Photo.create!([
   {user_id: 1, review: "I love tuna!", filepicker_url: "https://www.filepicker.io/api/file/VOxBqdoTSSZZCr2a7wwR", place: "White Dog Cafe, Sansom Street, Philadelphia, PA, United States", rating: 5, name: "Ahi Tuna", menu_item_id: 9, restaurant_id: 9},
   {user_id: 1, review: "This is so good", filepicker_url: "https://www.filepicker.io/api/file/EjJtLk4RRVu6ahKymI6g", place: "Fat Salmon Sushi, Walnut Street, Philadelphia, PA, United States", rating: 5, name: "Sushi", menu_item_id: 10, restaurant_id: 10},
   {user_id: 1, review: "This is sushi", filepicker_url: "https://www.filepicker.io/api/file/fXXVVv9eSau6ZnXInaDI", place: "Sushirrito, New Montgomery Street, San Francisco, CA, United States", rating: 3, name: "Sushi", menu_item_id: 10, restaurant_id: 11},
-  {user_id: 1, review: "blah blah", filepicker_url: "https://www.filepicker.io/api/file/X5zQBAQAGmXGOwDEjJ9A", place: "Yuraku Japanese Restaurant, Frederick Road, Germantown, MD, United States", rating: 4, name: "Sushi", menu_item_id: 11, restaurant_id: 12},
-  {user_id: 1, review: "so much sushi", filepicker_url: "https://www.filepicker.io/api/file/aKzeo2c6QGKN94rfCW8g", place: "Marina Sushi Bar, Lombard Street, San Francisco, CA, United States", rating: 4, name: "Sushi", menu_item_id: 10, restaurant_id: 13}
+  {user_id: 1, review: "blah blah", filepicker_url: "https://www.filepicker.io/api/file/X5zQBAQAGmXGOwDEjJ9A", place: "Yuraku Japanese Restaurant, Frederick Road, Germantown, MD, United States", rating: 4, name: "Sushi", menu_item_id: 10, restaurant_id: 12},
+  {user_id: 1, review: "so much sushi", filepicker_url: "https://www.filepicker.io/api/file/aKzeo2c6QGKN94rfCW8g", place: "Marina Sushi Bar, Lombard Street, San Francisco, CA, United States", rating: 4, name: "Sushi", menu_item_id: 10, restaurant_id: 13},
+  {user_id: 1, review: "A classic take-out food place near 40th and Locust!", filepicker_url: "https://www.filepicker.io/api/file/I8yqVJn9RZFQFUfZzoG6", place: "Greek Lady, South 40th Street, Philadelphia, PA, United States", rating: 4, name: "House Gyro", menu_item_id: 11, restaurant_id: 14},
+  {user_id: 1, review: "Nothing special.", filepicker_url: "https://www.filepicker.io/api/file/bZvOLPfWSPuBNTy6k0zf", place: "Greek Lady, South 40th Street, Philadelphia, PA, United States", rating: 3, name: "Greek Salad with Chicken", menu_item_id: 12, restaurant_id: 14},
+  {user_id: 1, review: "I usually don't get dessert here, but better than expected!", filepicker_url: "https://www.filepicker.io/api/file/JMGvJPIfTwGvngInB506", place: "Greek Lady, South 40th Street, Philadelphia, PA, United States", rating: 4, name: "Salted Caramel Cake", menu_item_id: 13, restaurant_id: 14},
+  {user_id: 1, review: "One of the favorites for this restaurant!", filepicker_url: "https://www.filepicker.io/api/file/YxyQTYJTyyO5rwEl9JJT", place: "Greek Lady, South 40th Street, Philadelphia, PA, United States", rating: 5, name: "Spinach Chicken Feta Sandwich", menu_item_id: 14, restaurant_id: 14},
+  {user_id: 1, review: "So much better than it looks. Trust me.", filepicker_url: "https://www.filepicker.io/api/file/l88p4XM5SiKRf3Md027w", place: "White Dog Cafe, Sansom Street, Philadelphia, PA, United States", rating: 5, name: "Lentil Soup", menu_item_id: 15, restaurant_id: 9},
+  {user_id: 1, review: "Exquisite. Perfect brunch appetizers.", filepicker_url: "https://www.filepicker.io/api/file/YkCY0efUS7aBImXAhrJh", place: "White Dog Cafe, Sansom Street, Philadelphia, PA, United States", rating: 5, name: "Lamb Sliders", menu_item_id: 16, restaurant_id: 9},
+  {user_id: 1, review: "I suck with words, but this was really good. ", filepicker_url: "https://www.filepicker.io/api/file/SRmVEvxJQyISD0FO4zEg", place: "Danji, West 52nd Street, New York, NY, United States", rating: 5, name: "Steak Tartare with quail yolk, toasted pine nuts, and Asian pear", menu_item_id: 17, restaurant_id: 7},
+  {user_id: 1, review: "Interesting aesthetics, even more interesting taste.", filepicker_url: "https://www.filepicker.io/api/file/cZiXgFiqQVuLd3h4wBpX", place: "Danji, West 52nd Street, New York, NY, United States", rating: 4, name: "Tofu with Scallion Dressing", menu_item_id: 18, restaurant_id: 7},
+  {user_id: 1, review: "this is called 고등어조림 (ko-deung-uh-jorim) in korean!", filepicker_url: "https://www.filepicker.io/api/file/uAz3JoGQSuuqqtPd1cQU", place: "Danji, West 52nd Street, New York, NY, United States", rating: 5, name: "Poached Sablefish with Spicy Daikon", menu_item_id: 19, restaurant_id: 7},
+  {user_id: 1, review: "Tasty, but overpriced.", filepicker_url: "https://www.filepicker.io/api/file/zQYBD2RpRMKxvk76jXSK", place: "Founding Farmers, Park Potomac Avenue, Potomac, MD, United States", rating: 4, name: "Devilish Eggs", menu_item_id: 20, restaurant_id: 15},
+  {user_id: 1, review: "Don't underestimate this dish. This is the real deal.", filepicker_url: "https://www.filepicker.io/api/file/SgbPGeEKS6eLpNP2dAUX", place: "Founding Farmers, Park Potomac Avenue, Potomac, MD, United States", rating: 5, name: "Chili Dog", menu_item_id: 21, restaurant_id: 15},
+  {user_id: 1, review: "READ: made-to-order.", filepicker_url: "https://www.filepicker.io/api/file/2t25XUYdQouzXX6sD8Yo", place: "Founding Farmers, Park Potomac Avenue, Potomac, MD, United States", rating: 4, name: "Beignets", menu_item_id: 22, restaurant_id: 15},
+  {user_id: 1, review: "this is so good. this is the best thing on the menu. get it.", filepicker_url: "https://www.filepicker.io/api/file/blRLjh2QFWnkbOEljuyR", place: "Founding Farmers, Park Potomac Avenue, Potomac, MD, United States", rating: 5, name: "Prosciutto, Fig, Mascarpone flat bread", menu_item_id: 23, restaurant_id: 15},
+  {user_id: 1, review: "<3<3<3", filepicker_url: "https://www.filepicker.io/api/file/uHswK7PeRVy6Ib0dx4l8", place: "Ramen Bar, Locust Street, Philadelphia, PA, United States", rating: 5, name: "Green Tea Ice Cream", menu_item_id: 24, restaurant_id: 2},
+  {user_id: 1, review: "Is this really from Panda Express? Tbh, no.", filepicker_url: "https://www.filepicker.io/api/file/2HZqSs3URm3QecPYph6w", place: "Panda Express, Market Street, San Francisco, CA, United States", rating: 3, name: "Orange Chicken", menu_item_id: 25, restaurant_id: 16},
+  {user_id: 1, review: "bleh. Not my favorite", filepicker_url: "https://www.filepicker.io/api/file/GDNwE7weQ1elSZWiFxRq", place: "HipCityVeg, Philadelphia, PA, United States", rating: 2, name: "Veggie Burger", menu_item_id: 26, restaurant_id: 17},
+  {user_id: 1, review: "Not actually in Starbucks. Just seed data-ing. heh", filepicker_url: "https://www.filepicker.io/api/file/yrJg8J9QR4O0f21gETIk", place: "Starbucks, Market Street, San Francisco, CA, United States", rating: 4, name: "Xocolatl", menu_item_id: 27, restaurant_id: 18},
+  {user_id: 1, review: "Tastes like chicken. No it doesn't.", filepicker_url: "https://www.filepicker.io/api/file/jHeHPMVLSnWlOgZP1lcC", place: "Zeppole, North 8th Street, Boise, ID, United States", rating: 4, name: "Zeppole", menu_item_id: 28, restaurant_id: 19}
 ])
 Restaurant.create!([
   {name: "Koreana Food, Chestnut Street, Philadelphia, PA, United States", rating: 3},
@@ -34,13 +70,19 @@ Restaurant.create!([
   {name: "Ramen Yamadaya, Buchanan Street, San Francisco, CA, United States", rating: 2},
   {name: "Homeskillet, Market Street, San Francisco, CA, United States", rating: 4},
   {name: "Kobe Bento, Kearny Street, San Francisco, CA, United States", rating: 3},
-  {name: "Danji, West 52nd Street, New York, NY, United States", rating: 5},
   {name: "The Cheesecake Factory, Geary Street, San Francisco, CA, United States", rating: 2},
   {name: "White Dog Cafe, Sansom Street, Philadelphia, PA, United States", rating: 5},
   {name: "Fat Salmon Sushi, Walnut Street, Philadelphia, PA, United States", rating: 5},
   {name: "Sushirrito, New Montgomery Street, San Francisco, CA, United States", rating: 3},
   {name: "Yuraku Japanese Restaurant, Frederick Road, Germantown, MD, United States", rating: 4},
-  {name: "Marina Sushi Bar, Lombard Street, San Francisco, CA, United States", rating: 4}
+  {name: "Marina Sushi Bar, Lombard Street, San Francisco, CA, United States", rating: 4},
+  {name: "Greek Lady, South 40th Street, Philadelphia, PA, United States", rating: 4},
+  {name: "Danji, West 52nd Street, New York, NY, United States", rating: 4},
+  {name: "Founding Farmers, Park Potomac Avenue, Potomac, MD, United States", rating: 4},
+  {name: "Panda Express, Market Street, San Francisco, CA, United States", rating: 3},
+  {name: "HipCityVeg, Philadelphia, PA, United States", rating: 2},
+  {name: "Starbucks, Market Street, San Francisco, CA, United States", rating: 4},
+  {name: "Zeppole, North 8th Street, Boise, ID, United States", rating: 4}
 ])
 User.create!([
   {username: "markov", email: "markov@gmail.com", password_digest: "$2a$10$cKLeovmNr94KVPqtOWDLZOxyLrgCAtGTOxepavJnXAS375LPUrjmu", session_token: "TeYG5R5FgPHCnvrOPaaaGg"}
