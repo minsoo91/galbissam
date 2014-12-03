@@ -1,7 +1,10 @@
 class StaticPageController < ApplicationController
-	before_action :require_signin!, only: [:root]
 	def root
-		render :root
+		if (!signed_in?) 
+			redirect_to landing_url
+		else
+			render :root
+		end
 	end
 
 	def splash

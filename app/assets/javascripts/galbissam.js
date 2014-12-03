@@ -4,12 +4,19 @@ window.Galbissam = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	new Galbissam.Routers.Router({
-  		$rootEl: $('#content')
-  	});
-    globalAutoComplete = new Galbissam.Views.Autocomplete();
-    globalAutoComplete.render();
-  	Backbone.history.start();
+    var collection = new Galbissam.Collections.Photos();
+    collection.fetch({
+      data: { page: 1 },
+      success: function () {
+        new Galbissam.Routers.Router({
+          collection: collection,
+          $rootEl: $('#content')
+        });
+        globalAutoComplete = new Galbissam.Views.Autocomplete();
+        globalAutoComplete.render();
+        Backbone.history.start();        
+      }
+    })
   }
 };
 

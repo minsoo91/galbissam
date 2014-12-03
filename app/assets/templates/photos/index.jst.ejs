@@ -1,9 +1,10 @@
-<% photos.each(function (photo) { %>
-  <div class="col-sm-6 col-md-4" id="image-wrapper">
-    <a href="#/photos/<%= photo.id %>" class="thumbnail">
-     <img src="<%= photo.get("filepicker_url") %>">
-    </a>
-  </div>
-<% }) %>
-
-<div class="sk-spinner sk-spinner-rotating-plane"></div>
+<div id="allphotos">
+	<% photos.each(function (photo) { %>
+	  <div class="col-sm-6 col-md-4" id="image-wrapper">
+	    <a href="#/photos/<%= photo.id %>" class="thumbnail">
+	     <img src="<%= photo.get("filepicker_url") %>">
+	    </a>
+	  </div>
+	<% }) %>
+</div>
+<div id="spinner"></div>

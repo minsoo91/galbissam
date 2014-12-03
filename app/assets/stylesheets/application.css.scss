@@ -108,10 +108,19 @@ p {
 	-webkit-transform: rotate(5deg); 
 }
 
+#allphotos {
+	padding-bottom: 1100px;
+}
+
+#spinner {
+	display: block;
+	margin-bottom: 100px;
+}
+
 .sk-spinner-rotating-plane.sk-spinner {
   width: 30px;
   height: 30px;
-  background-color: #CCCCCC;
+  background-color: #333;
   margin: 0 auto;
   -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
           animation: sk-rotatePlane 1.2s infinite ease-in-out; }

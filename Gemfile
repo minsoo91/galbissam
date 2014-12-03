@@ -18,6 +18,7 @@ gem 'filepicker-rails'
 gem 'figaro'
 gem 'geocoder'
 gem 'seed_dump'
+gem 'kaminari'
 
 
 group :development do
