@@ -1,10 +1,4 @@
 window.Galbissam.Views.Autocomplete = Backbone.View.extend({
-	initialze: function () {
-		this.listenTo(Galbissam.Collections.menuitems, 'sync add reset', this.render)
-		this.listenTo(Galbissam.Collections.restaurants, 'sync add reset', this.render)
-		this.listenTo(Galbissam.Collections.users, 'sync add reset', this.render)
-	},
-
 	render: function () {
 		view = this;
 		console.log("autocomplete render")
@@ -14,9 +8,9 @@ window.Galbissam.Views.Autocomplete = Backbone.View.extend({
 		usersCollection = Galbissam.Collections.users.fetch();
 		// REMEMBER THIS METHOD
 		$.when(menuitemsCollection, restaurantsCollection, usersCollection).then(function() {
-			menuitemsObjects = arguments[0][0]
-			restaurantsObjects = arguments[1][0]
-			usersObjects = arguments[2][0]
+			var menuitemsObjects = arguments[0][0]
+			var restaurantsObjects = arguments[1][0]
+			var usersObjects = arguments[2][0]
 			var menuitemsArray = that.makeArray(menuitemsObjects);
 			var restaurantsArray = that.makeArray(restaurantsObjects);
 			var usersArray = that.makeArray(usersObjects);
@@ -107,7 +101,6 @@ window.Galbissam.Views.Autocomplete = Backbone.View.extend({
 		return itemsArray		
 	},
 	searchSubmit: function (event) {
-		debugger;
 		if (event) {
 			event.preventDefault();
 		}
@@ -120,6 +113,7 @@ window.Galbissam.Views.Autocomplete = Backbone.View.extend({
 			view.navigateToURI(menuitemsHash, restaurantsHash, usersHash, searchQuery)
 		})		
 	},
+
 	navigateToURI: function (meunitemssHash, restaurantsHash, usersHash, searchQuery) {
 		if (this.matchItem(menuitemsHash.menuitems, menuitemsHash, searchQuery)) {
 			Backbone.history.navigate(this.matchItem(menuitemsHash.menuitems, menuitemsHash, searchQuery), { trigger: true })

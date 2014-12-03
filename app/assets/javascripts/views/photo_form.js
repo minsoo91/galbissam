@@ -82,6 +82,7 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 		  	var restaurant = new Galbissam.Models.Restaurant({ name: place });
 		  	Galbissam.Collections.restaurants.create(restaurant, {
 		  		success: function () {
+		  			globalAutoComplete.render();
 		  			return callback(that, restaurant);
 		  		}
 		  	})

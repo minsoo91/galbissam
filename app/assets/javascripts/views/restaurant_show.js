@@ -13,7 +13,6 @@ window.Galbissam.Views.RestaurantShow = Backbone.CompositeView.extend({
 	className: "explore",
 	template: JST['restaurants/show'],
 	render: function () {
-		debugger;
 		var that = this;
 		var content = this.template({ restaurant: this.model});
 		this.$el.html(content);
