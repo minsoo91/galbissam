@@ -3,6 +3,28 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
 	initialize: function () {
 		this.listenTo(this.collection, "add", this.render)
 	},
+	events: {
+		"click .highest-rated": "getHighestRated",
+		"click .most-liked": "getMostLiked"
+	},
+
+	getMostLiked: function(event) {
+		event.preventDefault();
+		this.collection.fetch({data: {sort: "likes DESC"}}, {
+			success: function () {
+				this.render();
+			}.bind(this)
+		})
+	},
+	getHighestRated: function(event){
+		event.preventDefault();
+		//fetch the collection with a query string
+		this.collection.fetch({data: {sort: "rating DESC"}}, {
+			success: function () {
+				this.render();
+			}.bind(this)
+		})
+	},
 
 	template: JST['photos/index'],
 
@@ -29,7 +51,6 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
   nextPage: function () {
     var self = this;
     if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
-      console.log("scrolled to bottom!");
       if (self.collection.page_number < self.collection.total_pages) {
       	if (!self.$('#spinner').hasClass("sk-spinner sk-spinner-rotating-plane")) {
 			self.$('#spinner').addClass("sk-spinner sk-spinner-rotating-plane")
@@ -40,7 +61,6 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
           wait: true,
           success: function () {
           	self.$el.find('#spinner').removeClass("sk-spinner sk-spinner-rotating-plane")
-            console.log("successfully fetched page " + self.collection.page_number);
           }
         });
       }

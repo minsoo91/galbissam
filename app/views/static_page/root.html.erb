@@ -191,6 +191,7 @@
 
 <!--bootstrap -->
 <script type="text/javascript">
+	window.photoIds = JSON.parse('<%= Photo.pluck(:id).to_json.html_safe %>');
     window.currentUser = {
         id : "<%=current_user.id%>"
     }

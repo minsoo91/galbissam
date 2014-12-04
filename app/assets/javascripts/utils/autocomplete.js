@@ -1,7 +1,6 @@
 window.Galbissam.Views.Autocomplete = Backbone.View.extend({
 	render: function () {
 		view = this;
-		console.log("autocomplete render")
 		var that = this;
 		menuitemsCollection = Galbissam.Collections.menuitems.fetch();
 		restaurantsCollection = Galbissam.Collections.restaurants.fetch();

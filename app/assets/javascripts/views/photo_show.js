@@ -126,6 +126,6 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		if (event) {
 			event.preventDefault();
 		}
-		Backbone.history.navigate("#/photos/" + (Math.floor(Math.random() * this.collection.length) + 1) + "", { trigger: true} )
+		Backbone.history.navigate("#/photos/" + (_(photoIds).sample()) + "", { trigger: true} )
 	},
 });

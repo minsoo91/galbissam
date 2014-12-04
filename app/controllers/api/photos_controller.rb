@@ -1,15 +1,12 @@
 class Api::PhotosController < ApplicationController
 	def index
 		@photos = Photo.page(params[:page]).per(9)
-		respond_to do |format|
-			format.json {
-				render json: {
-					models: @photos,
-					page_number: params[:page],
-					total_pages: @photos.total_pages
-				}
-			}
-		end
+		render json: {
+			models: @photos.includes(:likes).order(params[:sort]),
+			page_number: params[:page],
+			total_pages: @photos.total_pages
+		}
+			
 	end
 
 	def show
