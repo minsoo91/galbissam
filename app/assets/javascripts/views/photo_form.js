@@ -7,6 +7,7 @@ window.Galbissam.Views.PhotoForm = Backbone.View.extend({
 	template: JST['photos/form'],
 	render: function () {
 		var content = this.template({ photo: this.model });
+		debugger;
 		this.$el.html(content);
 		return this;
 	},
