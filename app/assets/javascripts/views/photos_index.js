@@ -11,6 +11,11 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
 			photos: this.collection
 		});
 		this.$el.html(content);
+		if (!$('img').hasClass('faded')) {
+			this.$('img').hide().fadeIn(2000, function () {
+				$('img').addClass('faded')
+			})
+		}
 		this.listenForScroll();
 		return this;
 	},
