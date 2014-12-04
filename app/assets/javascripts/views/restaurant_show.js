@@ -28,5 +28,5 @@ window.Galbissam.Views.RestaurantShow = Backbone.CompositeView.extend({
 		    	address: this.model.get("name")
 		    });
 	    this.addSubview('#map-show', view);
-	}
+	},
 });
