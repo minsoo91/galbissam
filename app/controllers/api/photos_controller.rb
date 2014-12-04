@@ -1,5 +1,6 @@
 class Api::PhotosController < ApplicationController
 	def index
+		sleep(0.3)
 		@photos = Photo.page(params[:page]).per(9)
 		respond_to do |format|
 			format.json {
