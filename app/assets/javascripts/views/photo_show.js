@@ -32,7 +32,7 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		this.$el.find('#photo-show').focus();
 		this.$el.find('#rating').raty({score: this.model.get("rating"), readOnly: true})
 		this.$el.find('#rating').append(" (Food Rating)")
-
+		this.getLikers();
 		return this;
 	},
 
@@ -43,16 +43,14 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 			$('#like-mark').html("<img src='assets/glyph-heart-pop-big.png'>")
 			$('#like-mark img').fadeOut(2000);
 			this.likes.create({ photo_id: this.model.id, user_id: parseInt(window.currentUser.id) })
-			$('#who-liked').append(username)
+			var likes = this.likes.where({ photo_id: this.model.id })
+			
+			this.displayLikes(likes, username)
 		} else {
 			currentuserLike.destroy();
 			this.likes.remove(currentuserLike);
 			$('#who-liked').empty();
-
 			this.getLikers();
-			
-			
-			// append all the users that had liked this again.
 		}
 
 		this.$('#photo-show').focus();
@@ -60,8 +58,8 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 
 	getLikers: function () {
 		var listOfLikers = ""
+		
 		var likes = this.likes.where({ photo_id: this.model.id })
-
 		if (this.users.length > 0) {
 			for(var i = 0; i < likes.length; i++) {
 				var like = likes[i]
@@ -70,9 +68,14 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 				}
 			}
 		}
-		debugger;
-		if (likes.length > 1) {
-			$('#who-liked').append(likersCount + " likes")
+
+		this.displayLikes(likes, listOfLikers)
+	},
+
+	displayLikes: function (likes, listOfLikers) {
+		if (likes.length > 9) {
+			$('#who-liked').empty();
+			$('#who-liked').append(likes.length + " likes")
 		} else {
 			$('#who-liked').append(listOfLikers)
 		}
