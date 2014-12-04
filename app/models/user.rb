@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
 		dependent: :destroy
 	)
 
+	has_many(
+		:likes,
+		class_name: "Like",
+		foreign_key: :user_id,
+		primary_key: :id,
+		dependent: :destroy
+	)
+
 	after_initialize :ensure_session_token
 
 	def self.find_by_credentials(email, password)

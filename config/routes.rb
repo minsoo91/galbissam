@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   	resources :photos, only: [:index, :show, :create, :new]
   	resources :restaurants
   	resources :menuitems
+  	resources :likes
   end
 end

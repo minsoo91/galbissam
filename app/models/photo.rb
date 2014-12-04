@@ -21,4 +21,11 @@ class Photo < ActiveRecord::Base
 		foreign_key: :restaurant_id,
 		primary_key: :id
 	)
+
+	has_many(
+		:likes,
+		class_name: "Like",
+		foreign_key: :photo_id,
+		primary_key: :id
+	)
 end

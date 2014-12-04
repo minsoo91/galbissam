@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.hcaptions
 //= require bloodhound.min
 //= require typeahead.bundle.min
 //= require typeahead.jquery.min

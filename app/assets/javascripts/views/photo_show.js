@@ -8,12 +8,14 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 	},
 
 	events: {
-		"dblclick img": "likePhoto",
+		"dblclick img": "toggleLike",
+		"dblclick #like-mark": "toggleLike",
 		"click #mapclick": "addMap",
 		"keydown #photo-show": "keyAction",
 		"click #random": "randomPhoto",
 		"click #previous": "previousPhoto",
-		"click #next": "nextPhoto"
+		"click #next": "nextPhoto",
+		"click img": "disableClick"
 	},
 
 	template: JST["photos/show"],
@@ -28,11 +30,24 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		this.$el.find('#photo-show').focus();
 		this.$el.find('#rating').raty({score: this.model.get("rating"), readOnly: true})
 		this.$el.find('#rating').append(" (Food Rating)")
+
 		return this;
 	},
 
-	likePhoto: function (event) {
-		alert("LIKED!")
+	toggleLike: function (event) {
+		var username = this.user.get("username");
+		if (!$('#photo').hasClass("liked")) {
+			$('#photo').addClass("liked")
+			$('#like-mark').html("<img src='assets/glyph-heart-pop-big.png'>")
+			$('#like-mark img').fadeOut(1000);
+			$('#who-liked').append(username)
+		} else {
+			$('#photo').removeClass("liked")
+			$('#who-liked').empty()
+			// append all the users that had liked this again.
+		}
+
+		this.$('#photo-show').focus();
 	},
 
 	addMap: function (event) {
@@ -53,7 +68,7 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		} else if (code == 82) {
 			this.randomPhoto();
 		} else if (code == 76) {
-			this.likePhoto();
+			this.toggleLike();
 		}
 	},
 	previousPhoto: function (event) {
@@ -81,5 +96,9 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 			event.preventDefault();
 		}
 		Backbone.history.navigate("#/photos/" + (Math.floor(Math.random() * this.collection.length) + 1) + "", { trigger: true} )
+	},
+
+	disableClick: function (event) {
+		event.preventDefault();
 	}
 });

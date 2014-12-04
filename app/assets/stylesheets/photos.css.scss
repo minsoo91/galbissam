@@ -16,3 +16,20 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
+
+#photo-container {
+	position: relative;
+}
+#like-mark,
+#photoz {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#like-mark img {
+	height: 400px;
+	width: 400px;
+	margin-left: 100px;
+}
+
