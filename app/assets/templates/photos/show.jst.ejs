@@ -21,7 +21,16 @@
 		<div id="photo-wrapper"><img id="photo" src="<%= photo.get("filepicker_url") %>"></div>
 		<div id="like-mark"></div>
 	</div>
-	<div id="who-liked"></div>
+	<div id="who-liked">
+		<% if (users.length > 0) { %>
+			<% for(var i = 0; i < likes.length; i++) { %>
+				<% var like = likes[i].get("user_id") %>
+				<% if (like) { %>
+					<%= (users.get(like)).get("username") %>
+				<% } %>
+			<% } %>
+		<% } %>
+	</div>
 	<div id="photo-detail">
 	<p><%= photo.get("review") %></p>
 	</div>

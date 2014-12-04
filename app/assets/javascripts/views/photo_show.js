@@ -3,8 +3,11 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 	initialize: function (options) {
 		this.listenTo(this.model, "sync", this.render);
 		this.user = options.user;
+		this.users = options.users;
+		this.likes = options.likes;
 		this.listenToOnce(this.user, "sync", this.render);
 		this.listenTo(this.collection, "sync", this.render);
+		this.listenToOnce(this.likes, "sync", this.render);
 	},
 
 	events: {
@@ -14,8 +17,7 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		"keydown #photo-show": "keyAction",
 		"click #random": "randomPhoto",
 		"click #previous": "previousPhoto",
-		"click #next": "nextPhoto",
-		"click img": "disableClick"
+		"click #next": "nextPhoto"
 	},
 
 	template: JST["photos/show"],
@@ -25,7 +27,7 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		if (this.model.get("user_id")) {
 			this.user.fetch();
 		}
-		var content = this.template({ photo: this.model, user: this.user });
+		var content = this.template({ photo: this.model, user: this.user, likes: this.likes.where({ photo_id: this.model.id }), users: this.users });
 		this.$el.html(content);
 		this.$el.find('#photo-show').focus();
 		this.$el.find('#rating').raty({score: this.model.get("rating"), readOnly: true})
@@ -35,19 +37,45 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 	},
 
 	toggleLike: function (event) {
-		var username = this.user.get("username");
-		if (!$('#photo').hasClass("liked")) {
-			$('#photo').addClass("liked")
+		var username = this.users.get(window.currentUser.id).get("username");
+		var currentuserLike = this.likes.where({ photo_id: this.model.id,  user_id: parseInt(window.currentUser.id) })[0]
+		if (!currentuserLike) {
 			$('#like-mark').html("<img src='assets/glyph-heart-pop-big.png'>")
-			$('#like-mark img').fadeOut(1000);
+			$('#like-mark img').fadeOut(2000);
+			this.likes.create({ photo_id: this.model.id, user_id: parseInt(window.currentUser.id) })
 			$('#who-liked').append(username)
 		} else {
-			$('#photo').removeClass("liked")
-			$('#who-liked').empty()
+			currentuserLike.destroy();
+			this.likes.remove(currentuserLike);
+			$('#who-liked').empty();
+
+			this.getLikers();
+			
+			
 			// append all the users that had liked this again.
 		}
 
 		this.$('#photo-show').focus();
+	},
+
+	getLikers: function () {
+		var listOfLikers = ""
+		var likes = this.likes.where({ photo_id: this.model.id })
+
+		if (this.users.length > 0) {
+			for(var i = 0; i < likes.length; i++) {
+				var like = likes[i]
+				if (like.get("user_id")) { 
+					listOfLikers += this.users.get(like.get("user_id")).get("username") + " "
+				}
+			}
+		}
+		debugger;
+		if (likes.length > 1) {
+			$('#who-liked').append(likersCount + " likes")
+		} else {
+			$('#who-liked').append(listOfLikers)
+		}
 	},
 
 	addMap: function (event) {
@@ -97,8 +125,4 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		}
 		Backbone.history.navigate("#/photos/" + (Math.floor(Math.random() * this.collection.length) + 1) + "", { trigger: true} )
 	},
-
-	disableClick: function (event) {
-		event.preventDefault();
-	}
 });
