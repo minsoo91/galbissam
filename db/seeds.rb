@@ -92,7 +92,27 @@ Like.create!([
   {photo_id: 3, user_id: 12},
   {photo_id: 1, user_id: 13},
   {photo_id: 2, user_id: 13},
-  {photo_id: 3, user_id: 13}
+  {photo_id: 3, user_id: 13},
+  {photo_id: 1, user_id: 14},
+  {photo_id: 2, user_id: 14},
+  {photo_id: 3, user_id: 14},
+  {photo_id: 4, user_id: 14},
+  {photo_id: 1, user_id: 15},
+  {photo_id: 2, user_id: 15},
+  {photo_id: 3, user_id: 15},
+  {photo_id: 4, user_id: 15},
+  {photo_id: 5, user_id: 15},
+  {photo_id: 1, user_id: 16},
+  {photo_id: 2, user_id: 16},
+  {photo_id: 3, user_id: 16},
+  {photo_id: 4, user_id: 16},
+  {photo_id: 5, user_id: 16},
+  {photo_id: 1, user_id: 17},
+  {photo_id: 2, user_id: 17},
+  {photo_id: 3, user_id: 17},
+  {photo_id: 4, user_id: 17},
+  {photo_id: 5, user_id: 17},
+  {photo_id: 6, user_id: 17}
 ])
 MenuItem.create!([
   {name: "Galbi Bibimbap", price: nil},
@@ -193,5 +213,9 @@ User.create!([
   {username: "earl", email: "earl@gmail.com", password_digest: "$2a$10$G8/CDAukZhsDB2u6wjRDl.9tzdc.1Wsv60WWiakVhZ.h.tdgsipyK", session_token: "kqNgRabENLqNjtype8rsLg"},
   {username: "jessica", email: "jessica@gmail.com", password_digest: "$2a$10$OzYs7tMP9G1ZPq1nP3CEAODoWyqcFN.DQ.Wts5tDYnh4yAA7Tpa/y", session_token: "ypUUmvtMrgK3vQ4YHvOB9g"},
   {username: "charles", email: "charles@gmail.com", password_digest: "$2a$10$jE7Pjp/c//rMdjl/VcWiSOO9IBHkeN41LNKJ12X/UpFP9u1uTIvzW", session_token: "AR9A8bpyHqCxYvE8Yue5hA"},
-  {username: "andrew", email: "andrew@gmail.com", password_digest: "$2a$10$/mvM.AePgNLQxi7lUyyYaemQwzZbWUSGtSKj5aHNsnPDiwi/P7dFq", session_token: "CbktJDPOQkjRxhuybaM7wQ"}
+  {username: "andrew", email: "andrew@gmail.com", password_digest: "$2a$10$/mvM.AePgNLQxi7lUyyYaemQwzZbWUSGtSKj5aHNsnPDiwi/P7dFq", session_token: "CbktJDPOQkjRxhuybaM7wQ"},
+  {username: "jackie", email: "jackie@gmail.com", password_digest: "$2a$10$FTJc2SvWLlrJvidnXUiofOiVOJcPyPPTkF6hIS.FeHyXc8TGzvDCy", session_token: "eRCOeNx6PHmq4ePJ4OfOyQ"},
+  {username: "vanessa", email: "vanessa@gmail.com", password_digest: "$2a$10$wtSKd7lLZLQHuO17dXTM7uqDqFhtUOmt459UIJhqJWayq4EHAVcBW", session_token: "NWZYRIb8wK0--mnmGs8oPw"},
+  {username: "miley", email: "miley@gmail.com", password_digest: "$2a$10$I3fR4mH7bheyiM1odpzIHOLBZv8g76F9udTxAaV.SQPFM1JrvaTuy", session_token: "1d1aiZrDX7bdl_GtJycm-Q"},
+  {username: "taylor", email: "taylor@gmail.com", password_digest: "$2a$10$PELOAHmAex0ALAFqzm9wCeFR7UCSa47jifNrFqF1Qw7G1IM4.3lKC", session_token: "sRQ3J0cR89NU-SkPdzIZ7A"}
 ])
