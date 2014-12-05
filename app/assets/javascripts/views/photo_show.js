@@ -16,8 +16,8 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		"click #mapclick": "addMap",
 		"keydown #photo-show": "keyAction",
 		"click #random": "randomPhoto",
-		"click #previous": "previousPhoto",
-		"click #next": "nextPhoto",
+		"click .glyphicon.glyphicon-chevron-left": "previousPhoto",
+		"click .glyphicon.glyphicon-chevron-right": "nextPhoto",
 		"hover #photo-show": "swing"
 	},
 

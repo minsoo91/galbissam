@@ -85,6 +85,10 @@ p {
 	margin: 0 auto;
 }
 
+#showPhoto {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 .showPhoto {
 	max-width:600px;
 	max-height:600px;
