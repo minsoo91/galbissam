@@ -111,9 +111,16 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		}
 		current_id = this.model.id;
 		if (current_id !== 1) {
-			this.$('#move-unit').hide('slide',{direction:'left'},1000, function () {
+			// this.$('#move-unit').hide('slide',{direction:'left'},1000, function () {
+			// 	Backbone.history.navigate("#/photos/" + (current_id - 1) + "", { trigger: true} )
+			// })
+			this.$('#move-unit').one('transitionend', function () {
 				Backbone.history.navigate("#/photos/" + (current_id - 1) + "", { trigger: true} )
-			})
+			});
+			this.$('#move-unit').attr('style', 'transition: 1s ease;position:fixed;left:30%');
+			setTimeout(function () {
+				this.$('#move-unit').css('left', '-50%');
+			}, 10);
 		}
 	},
 
@@ -122,11 +129,14 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 			event.preventDefault();
 		}
 		current_id = this.model.id;
-
-		if (current_id !== this.collection.length) {
-			this.$('#move-unit').hide('slide',{direction:'right'},1000, function () {
+		if (current_id < _(photoIds)._wrapped.length) {
+			this.$('#move-unit').one('transitionend', function () {
 				Backbone.history.navigate("#/photos/" + (current_id + 1) + "", { trigger: true} )
-			})		
+			});
+			this.$('#move-unit').attr('style', 'transition: 1s ease;position:fixed;left:30%');
+			setTimeout(function () {
+				this.$('#move-unit').css('left', '150%');
+			}, 10);	
 		}
 
 
