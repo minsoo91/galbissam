@@ -16,7 +16,7 @@
 //= require typeahead.jquery.min
 //= require jquery.raty
 //= require jquery_ujs
-//= require shepherd.min
+//= require shepherd
 //= require underscore
 //= require backbone
 //= require galbissam
