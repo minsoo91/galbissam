@@ -8,5 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Galbissam
   class Application < Rails::Application
+  	 config.assets.paths << "#{Rails}/vendor/assets/fonts"
   end
 end
