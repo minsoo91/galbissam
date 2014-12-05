@@ -5,7 +5,8 @@ class Like < ActiveRecord::Base
 		:photo,
 		class_name: "Photo",
 		foreign_key: :photo_id,
-		primary_key: :id
+		primary_key: :id,
+		counter_cache: true
 	)
 
 	belongs_to(

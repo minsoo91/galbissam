@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204094751) do
+ActiveRecord::Schema.define(version: 20141205000127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,16 +31,17 @@ ActiveRecord::Schema.define(version: 20141204094751) do
   end
 
   create_table "photos", force: true do |t|
-    t.integer  "user_id",        null: false
+    t.integer  "user_id",                    null: false
     t.string   "review"
-    t.string   "filepicker_url", null: false
+    t.string   "filepicker_url",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "place",          null: false
-    t.integer  "rating",         null: false
-    t.string   "name",           null: false
-    t.integer  "menu_item_id",   null: false
-    t.integer  "restaurant_id",  null: false
+    t.string   "place",                      null: false
+    t.integer  "rating",                     null: false
+    t.string   "name",                       null: false
+    t.integer  "menu_item_id",               null: false
+    t.integer  "restaurant_id",              null: false
+    t.integer  "likes_count",    default: 0, null: false
   end
 
   create_table "restaurant_menu_items", force: true do |t|

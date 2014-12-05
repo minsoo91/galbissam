@@ -10,7 +10,7 @@ window.Galbissam.Views.PhotosIndex = Backbone.View.extend({
 
 	getMostLiked: function(event) {
 		event.preventDefault();
-		this.collection.fetch({data: {sort: "likes DESC"}}, {
+		this.collection.fetch({data: {sort: "likes_count DESC"}}, {
 			success: function () {
 				this.render();
 			}.bind(this)
