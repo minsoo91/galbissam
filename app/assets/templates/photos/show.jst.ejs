@@ -1,24 +1,26 @@
 <img id="string" src="assets/string.png">
-<img id="clothespin" src="assets/clothespin.png">
-<div id="photo-show" tabindex="-1">
-	<h4><strong>'<%= photo.get("name") %>'</strong> -
-	<a href="#/users/<%= photo.get("user_id") %>">
-		<%= user.get("username") %>
-	</a>
-	</h4>
-	<a href="#/restaurants/<%= photo.get("restaurant_id") %>">
-		<%= photo.get("place") %>
-	</a> 
-	<a href="#/" id="mapclick">(<i class="fa fa-map-marker"></i> Find it!)</a>
-	<div id="map-show"></div>
-	<div id="rating"></div>
-	<div id="photo-container">
-		<div id="photo-wrapper"><img id="photo" src="<%= photo.get("filepicker_url") %>"></div>
-		<div id="like-mark"></div>
-	</div>
-	<div id="who-liked"></div>
-	<div id="photo-detail">
-	<p><%= photo.get("review") %></p>
+<div id="move-unit" style="position: absolute;">
+	<img id="clothespin" src="assets/clothespin.png">
+	<div id="photo-show" tabindex="-1">
+		<h4><strong>'<%= photo.get("name") %>'</strong> -
+		<a href="#/users/<%= photo.get("user_id") %>">
+			<%= user.get("username") %>
+		</a>
+		</h4>
+		<a href="#/restaurants/<%= photo.get("restaurant_id") %>">
+			<%= photo.get("place") %>
+		</a> 
+		<a href="#/" id="mapclick">(<i class="fa fa-map-marker"></i> Find it!)</a>
+		<div id="map-show"></div>
+		<div id="rating"></div>
+		<div id="photo-container">
+			<div id="photo-wrapper"><img id="photo" src="<%= photo.get("filepicker_url") %>"></div>
+			<div id="like-mark"></div>
+		</div>
+		<div id="who-liked"></div>
+		<div id="photo-detail">
+		<p><%= photo.get("review") %></p>
+		</div>
 	</div>
 </div>
 <div><span class="glyphicon glyphicon-chevron-left"></span>

@@ -39,8 +39,9 @@
 }
 
 #photo-show {
-	margin-top: 80px;
+	top: -36px;
 	margin-bottom: 80px;
+	position: relative;
 	border: 2px solid #CCC;
 	padding: 20px;
 	padding-bottom: 0px;
@@ -50,10 +51,15 @@
 	}
 }
 
+#move-unit {
+	max-width: 600px;
+	max-height: 600px;
+}
+
 #clothespin {
-	position: absolute;
-	top: 60px;
-	left: 700px;
+	position: relative;
+	top: 0px;
+	left: 300px;
 	width: 40px;
 }
 
