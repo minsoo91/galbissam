@@ -30,9 +30,59 @@
 #like-mark img {
 	height: 400px;
 	width: 400px;
-	margin-left: 100px;
+	margin-top: -10px;
+	margin-left: 70px;
 }
 
 .nav.nav-tabs {
 	margin-bottom: 15px;
+}
+
+#photo-show {
+	margin-top: 80px;
+	margin-bottom: 80px;
+	border: 2px solid #CCC;
+	padding: 20px;
+	padding-bottom: 0px;
+	border-radius: 5px;
+	img#photo {
+		border: 1px solid #999;
+	}
+}
+
+#clothespin {
+	position: absolute;
+	top: 60px;
+	left: 700px;
+	width: 40px;
+}
+
+#string {
+	position: absolute;
+	height: 80px;
+	top: 60px;
+	left: -50px;
+	width: 1500px;
+	box-shadow: 5px;
+}
+
+#who-liked {
+	border: 1px solid #CCC;
+	padding: 8px;
+	font-size: 15px;
+}
+
+#photo-detail {
+	margin-top: 15px;
+	padding: 5px;
+}
+
+#heart-icon {
+	height: 20px;
+	width: 20px;
+}
+
+#rating {
+	margin-top: 3px;
+	margin-bottom: 3px;
 }

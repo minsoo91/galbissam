@@ -17,7 +17,8 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		"keydown #photo-show": "keyAction",
 		"click #random": "randomPhoto",
 		"click #previous": "previousPhoto",
-		"click #next": "nextPhoto"
+		"click #next": "nextPhoto",
+		"hover #photo-show": "swing"
 	},
 
 	template: JST["photos/show"],
@@ -33,6 +34,7 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		this.$el.find('#rating').raty({score: this.model.get("rating"), readOnly: true})
 		this.$el.find('#rating').append(" (Food Rating)")
 		this.getLikers();
+
 		return this;
 	},
 
@@ -44,7 +46,6 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 			$('#like-mark img').fadeOut(2000);
 			this.likes.create({ photo_id: this.model.id, user_id: parseInt(window.currentUser.id) })
 			var likes = this.likes.where({ photo_id: this.model.id })
-			
 			this.displayLikes(likes, username)
 		} else {
 			currentuserLike.destroy();
@@ -68,14 +69,16 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 				}
 			}
 		}
-
+		var heart = "<img id = 'heart-icon' src = 'assets/heart.svg'>"
+		$('#who-liked').append(heart + " ");
 		this.displayLikes(likes, listOfLikers)
 	},
 
 	displayLikes: function (likes, listOfLikers) {
+		var heart = "<img id = 'heart-icon' src = 'assets/heart.svg'>"
 		if (likes.length > 9) {
 			$('#who-liked').empty();
-			$('#who-liked').append(likes.length + " likes")
+			$('#who-liked').append(heart + " " + likes.length + " likes")
 		} else {
 			$('#who-liked').append(listOfLikers)
 		}
@@ -128,4 +131,8 @@ window.Galbissam.Views.PhotoShow = Backbone.CompositeView.extend({
 		}
 		Backbone.history.navigate("#/photos/" + (_(photoIds).sample()) + "", { trigger: true} )
 	},
+
+	swing: function (event) {
+		$(event.currentTarget).addClass('animated swing')
+	}
 });

@@ -11,7 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
-
+ *= require jquery.raty
+ *= require animate
  *= require_self
 
  */
@@ -104,8 +105,6 @@ p {
 	height: 220px;
 	width: 340px;
 	border: 1px solid #CCCCCC;
-	-ms-transform: rotate(5deg);
-	-webkit-transform: rotate(5deg); 
 }
 
 
