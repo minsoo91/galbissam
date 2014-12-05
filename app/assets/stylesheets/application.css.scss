@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require jquery.raty
+ *= require shepherd-theme-arrows-plain-buttons
+ *= require shepherd-theme-arrows
  *= require animate
  *= require jquery-ui
  *= require_self
@@ -126,6 +128,7 @@ p {
   margin: 0 auto;
   -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
           animation: sk-rotatePlane 1.2s infinite ease-in-out; }
+
 @-webkit-keyframes sk-rotatePlane {
   0% {
     -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);

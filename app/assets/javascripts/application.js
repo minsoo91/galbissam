@@ -17,6 +17,7 @@
 //= require jquery.raty
 //= require jquery_ujs
 //= require jquery-ui
+//= require shepherd.min
 //= require underscore
 //= require backbone
 //= require galbissam
