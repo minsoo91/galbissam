@@ -196,8 +196,8 @@
     window.currentUser = {
         id : "<%=current_user.id%>"
     }
-
-   	var tour;
+    $(function(){
+    	var tour;
  
 	tour = new Shepherd.Tour({
 	  defaults: {
@@ -267,10 +267,13 @@
 		window.location.href = '#';
 		tour.complete();
 	}
-
-    $(document).ready(function () {
-    	$('#guide').on("click", function () {
+	    	$('#guide').on("click", function () {
     		tour.start();
     	})
-    });
+    })
+   	
+
+    // $(document).ready(function () {
+
+    // });
 </script>
