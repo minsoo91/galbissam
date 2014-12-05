@@ -14,7 +14,7 @@ window.Galbissam.Routers.Router = Backbone.Router.extend({
 
 	index: function () {
 		if (typeof sortType === 'undefined') {
-    		sortType = null
+    		sortType = null;
     	}
 		var pagedCollection = new Galbissam.Collections.Photos();
     	pagedCollection.fetch({data: { page: 1, sort: sortType } })
